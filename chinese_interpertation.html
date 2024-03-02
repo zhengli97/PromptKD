@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="DESCRIPTION META TAG">
+  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
+  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
+  <meta property="og:url" content="URL OF THE WEBSITE"/>
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+
+  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
+  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>OKDHP中文解读</title>
+  <link rel="icon" type="image/x-icon" href="None">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">PromptKD: Unsupervised Prompt Distillation for Vision-Language Models</h1>
+          <div class="is-size-3 content">
+            中文解读
+          </div>
+          <p class="is-size-5">李政 南开大学/蚂蚁集团</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths" style="width:100%">
+        <!-- <h2 class="title is-4">摘要</h2> -->
+        <div class="content has-text-justified">
+          <p>
+            Please wait.
+        </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+        <p>
+        <h2 class="title is-3">背景：</h2>
+        <p>
+          主流的2D姿态估计方法大多数都是基于Hourglass Network(HG)。
+          其含有多个堆叠的Hourglass，通常有2-stack, 4-stack, 8-stack类型。
+          后一个Hourglass将前一个Hourglass的结果作为输入，不断进行refine，直到结尾。
+          8-stack的结果要明显好于4-stack，但是与之而来的问题就是计算量明显的增加。
+        <p>
+          FPD (CVPR 19')首先提出，利用传统的蒸馏(KD)方法，
+          首先训一个8-stack HG作为teacher，选择一个4-stack HG作为student，然后进行KD。参考Fig. 1。
+        <figure>
+          <img src="static/images/fpd_framework.png" alt="">
+          <figcaption> Fig.1 FPD的总体结构。</figcaption>
+        </figure>
+        <p>
+          <strong>那么这篇工作明显存在着几点问题：</strong>
+        <p>
+          (1) 第一步训teacher，第二步训student，整体是一个two-stage的过程，较为繁琐。
+        <p>
+          (2) 如果要利用FPD训练一个8-stack HG的student，就需要找到一个比8-stack更高的model去作为teacher。
+          堆叠更多的HG会存在性能收益递减，并且带来计算量直线上升。
+        <p>
+          (3) KD过程中同时使用Mean Squared Error(MSE)作为传统任务的监督loss和kd loss，
+          训练时一个output同时针对两个target进行优化会带来明显的冲突。
+        </p>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+        <p>
+        <h2 class="title is-3">方法：</h2>
+          <figure>
+            <img src="static/images/comparison.png" alt="" width="80%">
+            <figcaption> Fig.2 方法结构对比。</figcaption>
+          </figure>
+          <p>
+          由以上的几个问题就引出了我们ICCV 2021的工作，我们首先提出了利用在线知识蒸馏的方法去对网络进行训练。
+          用大白话来概括一下工作的几个核心：
+          <p>
+          <strong>(1). 我们提出了一个在线知识蒸馏的框架，即一个多分支结构。</strong>这里的teacher不是显式存在的，
+          而是通过多个学生分支的结果经过了FAU的ensemble形成的，即established on the fly，
+          我们利用ensemble得到的结果（拥有更高的准确率）来扮演teacher的角色，来KD每个的学生分支，即在Fig.2 (b)中的三个小分支。
+          <p>
+          具体来说就是，如果要得到一个4-stack HG的网络，FPD的方式如(a)所示，先训练一个8-stack，然后进行KD。
+          而在我们的方法，如图(b)，直接建立一个多分支网络（图中为3个分支），其中每个分支视为student，
+          要得到一个4-stack HG，那么我们选择在前部share 2个stack（节约计算量），后面针对每一个branch，
+          我们将剩下的2个stack HG独立出来，以保持diversity。三个分支产生的结果经过FAU进行ensemble，
+          得到的ensemble heatmap再KD回每一个student分支。
+          <p>
+          我们的方法带来的直接的好处就是，整个的KD过程被简化到了one-stage，并且不需要手动的选择一个更高performance的teacher来进行KD。
+          Online KD的方法直接训练完了之后，选择一个最好性能的分支，去除掉其他多余分支结构即可得到一个更高acc的目标HG网络。
+          <p>
+          那么从这里也可以直接看出我们的多分支网络更省计算量，粗略的算，FPD的方法总共会需要8+4=12个stack参与计算，
+          我们的方法，只会有2x4=8个stack进行计算。
+          <p>
+          （针对diversity的问题提一下，在OKDDip中就有提及，针对这样的一个多分支模型，每个分支之间的diversity是需要考虑的，
+          对于每个分支，如果共享的stage过多，那么留给剩下分支的优化空间就会被明显缩小，分支之间在训练的过程中会显式的趋于同质化，
+          进而带来的结果就是ensemble结果准确率的下降。与之相反，独立的HG数量越多也可以带来KD性能的提升，分支数量同理，
+          详情请参考paper中的Table 7和8，这里不详细列出。我们在paper中将共享的HG数量设定为目标网络HG数量的一半，
+          即目标网络8-stack，整个网络就共享4-stack。）
+          <p>
+          <strong>(2). 既然是一个多分支结构，那么每个分支的情况可不可以是adaptive的？</strong>既然在分支里更多的stack可以产生更好的heatmap，
+          那么必然也就会带来ensemble结果的提升，进而KD的效果就会更好。于是针对(b)的这种每个分支都是一样的balance的结构，
+          我们更进一步提出了unbalance结构。
+          <p>
+          具体的来说，要KD得到一个4-stack HG，即Fig.2 (c)中的第一个branch，2+2=4个stack的主分支，
+          通过在辅助分支堆叠更多的HG来产生更好的ensemble结果，这里就是第二个分支是2+4=6个stack，第三个分支2+6=8个stack的情况。
+          <p>
+          在不考虑训练计算量的情况下，在部署时移除辅助分支，相比于balance结构，可以得到更好的main branch，即目标的4-stack HG。
+          <p>
+          <strong>(3). 这里的FAU，即Feature Aggregation Unit，是用来对每个分支产生的结果进行一个带有weight的channel-wise的ensemble。</strong>
+          即将每个heatmap按照生成的权重进行集成。具体的结构如Fig.3所示。
+          <figure>
+            <img src="static/images/fau.png" alt="" width="100%">
+            <figcaption> Fig.3 FAU结构。</figcaption>
+          </figure>
+          <p>
+          针对人体姿态估计这种场景下，其实是存在着很多的尺度变化问题，就比如一个人在一张图片中，既可以是贴的很近，占满了整张图片，
+          也可以是离得很远，只在图片中占小小的一个部分。
+          <p>
+          受到SKNet的启发，在原先的3x3, 5x5的基础上，
+          我们拓展出了7x7和avg pool来捕捉更大范围的信息，进而来生成对应每个分支产生的heatmap的weight。
+          消融实验证明了FAU确实是要比普通的attention方法提高更多。（小声：avg pool这branch我做了实验试了一下，有一丁丁的提升，灰常小）
+        <p>
+        </p>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+        <p>
+        <h2 class="title is-3">可拓展性：</h2>
+        <p>
+          需要强调的是，其实我们的OKDHP方法不仅是对于hourglass类别的网络有着明显的提升，对于其他的姿态估计网络也有效果，
+          我们将其拓展到了一个非常lightweight且能够real time进行姿态估计的开源实现MobilePose上面。
+          结果放在了paper的末尾位置的Supplementary Material里。
+        <p>
+          这里的MobilePose可以粗略的将这个网络分为encoder（backbone）和decoder部分。网络结构设计上，
+          我们选择去share整个的encoder部分，然后建立三个独立的分支，每个独立的分支都对应一个完整的decoder部分，
+          其中FAU结构保持不变。结果如下：
+          <figure>
+            <img src="static/images/mobilepose.png" alt="" width="80%">
+            <figcaption> Fig.4 在MPII验证集的PCKh@0.5分数。</figcaption>
+          </figure>
+        <p>
+          可以看到，对于更加轻量化的backbone结果，我们的OKDHP方法可以获得更明显的涨点。
+        <p>
+          再次说明一下，我们的方法不仅仅是能够work在hourglass这个特定的网络上面。针对其他的网络结构，如果想要应用OKDHP，
+          仔细的选择网络中共享和独立的部分来设计网络，我们提出的整个框架具有很好的拓展性。
+        </p>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+        <p>
+          <h2 class="title is-3">实验结果：</h2>
+          <p>
+            在MPII 验证集和测试集上：
+            <figure>
+              <img src="static/images/mpii_compare_method.png" alt="" width="100%">
+              <figcaption>Fig.5 MPII测试机方法对比PCKh@0.5分数。</figcaption>
+            </figure>
+            <figure>
+              <img src="static/images/mpii_increase.png" alt="" width="90%">
+              <figcaption>Fig.6 MPII验证集上PCKh@0.5分数。</figcaption>
+            </figure>
+            <p>
+            在Fig. 5上，我们针对2-stack，4-stack和8-stack都进行了实验，默认的实验条件是3分支结构。
+            共享的HG数量是整个目标网络HG的一半，即要训练一个8-stack HG，会share 4个HG，独立4个HG。FAU结构不随HG数量改变。
+            <p>
+            更进一步对比我们的Balance和Unbalance结构：
+            <figure>
+              <img src="static/images/balance_unbalance.png" alt="" width="50%">
+              <figcaption>Fig.7 基于4-stack HG的不同蒸馏方法对比。TrainCost: 以GLOPS为单位的训练代价。</figcaption>
+            </figure>
+            <p>
+            更为具体的Unbalance结构的精度情况：
+            <figure>
+              <img src="static/images/branch_acc.png" alt="" width="50%">
+              <figcaption>Fig.8 OKDHP不平衡结构里不同分支准确率的对比。</figcaption>
+            </figure>
+            <p>
+            这里面也就对应上了Fig. 1(c)里面的结构，训练目标就是一个4-stack HG的网络，那么我们这里选择6-stack和8-stack作为辅助分支，
+            确实是取得了更好的结果。
+            <p>
+            在COCO val 2017上：
+            <figure>
+              <img src="static/images/coco_increase.png" alt="" width="100%">
+              <figcaption> Fig.9 OKDHP在COCO val2017数据集上的结果.</figcaption>
+            </figure>
+            <p>
+            也有不错的性能提升。</p>
+      </div>
+    </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- <section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title">以上为全部内容解读</h2>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+</body>
+</html>
