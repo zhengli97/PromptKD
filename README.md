@@ -20,12 +20,13 @@ Results reported below show accuracy for base and novel classes for across 11 re
 
 | Name                                       | Base Acc. | Novel Acc. |    HM     | 
 |--------------------------------------------|:---------:|:----------:|:---------:|
-| [CLIP](https://arxiv.org/abs/2103.00020) |   69.34   |   74.22    |   71.70   | 
-| [CoOp](https://arxiv.org/abs/2109.01134) |   82.69   |   63.22    |   71.66   |
+| [CLIP](https://arxiv.org/abs/2103.00020)   |   69.34   |   74.22    |   71.70   | 
+| [CoOp](https://arxiv.org/abs/2109.01134)   |   82.69   |   63.22    |   71.66   |
 | [CoCoOp](https://arxiv.org/abs/2203.05557) |   80.47   |   71.69    |   75.83   |
-| [ProDA](https://arxiv.org/abs/2205.03340) |   81.56   |   75.83    |   76.65   | 
-| [MaPLe](https://arxiv.org/abs/2210.03117) |   82.28   | 75.14  | 78.55 |
-| [PromptSRC](https://arxiv.org/abs/2307.06948) | 84.26 | 76.10 | 79.97 |
+| [ProDA](https://arxiv.org/abs/2205.03340)  |   81.56   |   75.83    |   76.65   | 
+| [MaPLe](https://arxiv.org/abs/2210.03117)  |   82.28   |   75.14    |   78.55   |
+| [PromptSRC](https://arxiv.org/abs/2307.06948)| 84.26   |   76.10    |   79.97   |
+| [PrompKD]()                                  | 86.96   |   80.73    |   83.73   |
 
 ### Cross Dataset Experiments
 
@@ -49,17 +50,17 @@ Results reported below show accuracy for base and novel classes for across 11 re
 
 
 
-## Acknowledgements
 
-Our code is based on PromptSRC, [MaPLe](https://github.com/muzairkhattak/multimodal-prompt-learning), [Co-CoOp and CoOp](https://github.com/KaiyangZhou/CoOp) repository. We thank the authors for releasing their code.
+<!-- ## Citation
 
-## Citation
-
-If is repo is helpful for your research, please consider citing our paper and giving this repo a star.
-
+If is repo is helpful for your research, please consider citing our paper and giving this repo a star. -->
 
 
 
 ## Contact
 
 For any questions, please contact me via email (zhengli97@mail.nankai.edu.cn)
+
+## Acknowledgements
+
+Our code is based on PromptSRC, [MaPLe](https://github.com/muzairkhattak/multimodal-prompt-learning), [Co-CoOp and CoOp](https://github.com/KaiyangZhou/CoOp) repository. We thank the authors for releasing their code.
