@@ -12,26 +12,36 @@ To our best knowledge, we are the first to (1) perform unsupervised domain-speci
 
 ### Framework
 
+<div style="text-align:center"><img src="images/framework.png" width="100%" ></div>
+<figcaption class="content has-text-left"  style="word-break:normal">Figure 2. An overview of our PromptKD framework. <strong>(a)</strong> We first pre-train a large CLIP teacher model with labeled training images. <strong>(b)</strong> Reuse the existing higher-quality teacher text features for unsupervised prompt distillation. <strong>(c)</strong> The well-trained student and pre-stored teacher text features are utilized for final inference.</figcaption>
+
+
 
 ## Results
 Results reported below show accuracy for base and novel classes for across 11 recognition datasets averaged over 3 seeds.
 
 ### Base-to-Novel Experiments
 
-| Name                                       | Base Acc. | Novel Acc. |    HM     | 
-|--------------------------------------------|:---------:|:----------:|:---------:|
-| [CLIP](https://arxiv.org/abs/2103.00020)   |   69.34   |   74.22    |   71.70   | 
-| [CoOp](https://arxiv.org/abs/2109.01134)   |   82.69   |   63.22    |   71.66   |
-| [CoCoOp](https://arxiv.org/abs/2203.05557) |   80.47   |   71.69    |   75.83   |
-| [ProDA](https://arxiv.org/abs/2205.03340)  |   81.56   |   75.83    |   76.65   | 
-| [MaPLe](https://arxiv.org/abs/2210.03117)  |   82.28   |   75.14    |   78.55   |
-| [PromptSRC](https://arxiv.org/abs/2307.06948)| 84.26   |   76.10    |   79.97   |
-| [PrompKD]()                                  | 86.96   |   80.73    |   83.73   |
+<figure>
+<img src="images/exp_results.png" alt="fail" width="100%"">
+<figcaption class="content has-text-left" style="word-break:normal">Table 1. Comparison with existing state-of-the-art methods on base-to-novel generalization. Our PromptKD demonstrates strong generalization ability and achieves significant improvements on 11 recognition datasets given the <strong> ViT-B/16 image encoder</strong> of the CLIP model. The symbol △ denotes the performance improvement compared to the previous SOTA method.
+</figure>
+
+<figure>
+<img src="images/hm_score.png" alt="fail" width="80%"">
+<figcaption class="content has-text-centered" style="word-break:normal">Figure 1. Harmonic mean (HM) comparison on base-to-novel generalization.
+</figure>
+
 
 ### Cross Dataset Experiments
 
-
-
+<figure>
+<img src="images/exp_results2.png" alt="fail" width="100%"">
+<figcaption class="content has-text-left" style="word-break:normal">
+Table 2. Comparison of PromptKD with existing advanced approaches on cross-dataset benchmark evaluation. 
+Based on our pipeline, we perform unsupervised prompt distillation using the unlabeled domain data respectively (i.e., the transductive setting). 
+The source model is trained on ImageNet. "ZSL" denotes the setting type for Zero-Shot Learning.
+</figure>
 
 ## Model Zoo
 
