@@ -15,6 +15,15 @@ To our best knowledge, we are the first to (1) perform unsupervised domain-speci
 <div style="text-align:center"><img src="images/framework.png" width="100%" ></div>
 <figcaption class="content has-text-left"  style="word-break:normal">Figure 2. An overview of our PromptKD framework. <strong>(a)</strong> We first pre-train a large CLIP teacher model with labeled training images. <strong>(b)</strong> Reuse the existing higher-quality teacher text features for unsupervised prompt distillation. <strong>(c)</strong> The well-trained student and pre-stored teacher text features are utilized for final inference.</figcaption>
 
+### Highlights
+
+(1). A novel two-stage unsupervised prompt distillation framework for Vision-Language Models.
+
+(2). Reuse high-quality teacher text features instead of training the student's own text encoder.
+
+(3). Distillation on large amounts of unlabeled domain images using soft labels provided by teacher.
+
+(4). PromptKD outperforms all existing prompt learning methods on 11 diverse recognition datasets.
 
 
 ## Results
@@ -28,7 +37,7 @@ Results reported below show accuracy for base and novel classes for across 11 re
 </figure>
 
 <figure>
-<img src="images/hm_score.png" alt="fail" width="80%"">
+<img src="images/hm_score.png" alt="fail" width="50%"">
 <figcaption class="content has-text-centered" style="word-break:normal">Figure 1. Harmonic mean (HM) comparison on base-to-novel generalization.
 </figure>
 
