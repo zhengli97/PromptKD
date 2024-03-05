@@ -137,6 +137,10 @@ sh scripts/promptkd/base2new_train.sh oxford_pets 1
     
 4. The output results will be automatically saved at `output/${DATASET}/${TRAINER}/${CFG}_${SHOTS}shots/seed${SEED}`.
 
+## Model Zoo
+
+We will provide training logs and completed model files for your reference. Please wait.
+
 ## Contact
 
 For any questions, please contact me via email (zhengli97[at]mail.nankai.edu.cn).
