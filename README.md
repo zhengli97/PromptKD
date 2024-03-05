@@ -139,7 +139,6 @@ sh scripts/promptkd/base2new_train.sh oxford_pets 1
 
 ## Contact
 
-This repo is still 
 For any questions, please contact me via email (zhengli97[at]mail.nankai.edu.cn).
 
 ## Citation
