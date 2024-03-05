@@ -10,7 +10,7 @@ This codebase is tested on Ubuntu 20.04.2 LTS with python 3.8. Follow the below 
 conda create -y -n promptsrc python=3.8
 
 # Activate the environment
-conda activate promptsrc
+conda activate promptkd
 
 # Install torch (requires version >= 1.8.1) and torchvision
 # Please refer to https://pytorch.org/ if you need a different cuda version
@@ -33,12 +33,12 @@ python setup.py develop
 cd ..
 ```
 
-* Clone PromptSRC code repository and install requirements
+* Clone PromptKD code repository and install requirements
 ```bash
 # Clone PromptSRC code base
-git clone https://github.com/muzairkhattak/PromptSRC.git
+git clone https://github.com/zhengli97/PromptKD.git
 
-cd PromptSRC/
+cd PromptKD/
 # Install requirements
 
 pip install -r requirements.txt
