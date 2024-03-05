@@ -1,10 +1,10 @@
-# PromptKD: Unsupervised Prompt Distillationi for Vision-Language Models 
+# PromptKD: Unsupervised Prompt Distillation for Vision-Language Models 
 
-<!-- This is the official PyToch implementation for "PromptKD: Unsupervised Prompt Distillationi for Vision-Language Models." (CVPR 2024) -->
+<!-- This is the official PyToch implementation for "PromptKD: Unsupervised Prompt Distillation for Vision-Language Models." (CVPR 2024) -->
 
 
-> [**PromptKD: Unsupervised Prompt Distillatino for Vision-Language Models**]()
-> Zheng Li, Xiang Li*, Xinyi Fu, Xing Zhang, Weiqiang Wang, Shuo Chen, Jian Yang*.
+> [**PromptKD: Unsupervised Prompt Distillation for Vision-Language Models**]() <br>
+> Zheng Li, Xiang Li*, Xinyi Fu, Xing Zhang, Weiqiang Wang, Shuo Chen, Jian Yang*. <br>
 > CVPR 2024
 
 [[Paper]()] [[Project Page](https://zhengli97.github.io/PromptKD)] [[中文解读](https://zhengli97.github.io/PromptKD/chinese_interpertation.html)]
@@ -38,7 +38,7 @@ To our best knowledge, we are the first to (1) perform unsupervised domain-speci
 
 (2). Reuse high-quality teacher text features instead of training the student's own text encoder.
 
-(3). Distillation on large amounts of unlabeled domain images using soft labels provided by teacher.
+(3). Distillation on large amounts of unlabeled domain images using soft labels provided by the teacher.
 
 (4). PromptKD outperforms all existing prompt learning methods on 11 diverse recognition datasets.
 
@@ -75,7 +75,7 @@ The source model is trained on ImageNet. "ZSL" denotes the setting type for Zero
 2. Pre-train your own large teacher CLIP model or use our publicly released pre-trained teacher ViT-L/14 CLIP models. After obtaining the teacher model, place the model in the `./teacher_models` folder.  
 Our pre-trained teacher models are available at [[Baidu Yun]()] [[TeraBox]()]
 
-3. Prepare the dataset. Please follow the instructions detaild in [DATASETS.md](docs/DATASETS.md).
+3. Prepare the dataset. Please follow the instructions detailed in [DATASETS.md](docs/DATASETS.md).
 
 
 
