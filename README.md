@@ -69,6 +69,8 @@ The source model is trained on ImageNet. "ZSL" denotes the setting type for Zero
 
 ## Running
 
+(This repo is still under construction and we will update the remaining content soon.)  
+
 ### Preliminary
 
 1. Create the environment and install Dassl.pytorch library. Please follow the instructions detailed in [INSTALL.md](docs/INSTALL.md).
@@ -93,6 +95,7 @@ Our pre-trained teacher models are available at [[Baidu Yun](https://pan.baidu.c
 
 3. Run the commands below to train PromptKD on specified dataset.
 
+For example:
 ```
 # dataset=imagenet, seed=1 
 sh scripts/promptkd/base2new_train.sh imagenet 1
@@ -117,6 +120,7 @@ sh scripts/promptkd/base2new_train.sh caltech101 1
 
 3. Run the commands below to train PromptKD on specified dataset.
 
+For example:
 ```
 # dataset=caltech101, seed=1 
 sh scripts/promptkd/xd_train.sh caltech101 1
@@ -135,6 +139,7 @@ sh scripts/promptkd/base2new_train.sh oxford_pets 1
 
 ## Contact
 
+This repo is still 
 For any questions, please contact me via email (zhengli97[at]mail.nankai.edu.cn).
 
 ## Citation
