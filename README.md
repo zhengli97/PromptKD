@@ -5,9 +5,8 @@
 
 > [**PromptKD: Unsupervised Prompt Distillation for Vision-Language Models**]() <br>
 > Zheng Li, Xiang Li*, Xinyi Fu, Xing Zhang, Weiqiang Wang, Shuo Chen, Jian Yang*. <br>
-> CVPR 2024
-
-[[Paper]()] [[Project Page](https://zhengli97.github.io/PromptKD)] [[中文解读](https://zhengli97.github.io/PromptKD/chinese_interpertation.html)]
+> CVPR 2024 <br>
+> [[Paper]()] [[Project Page](https://zhengli97.github.io/PromptKD)] [[中文解读](https://zhengli97.github.io/PromptKD/chinese_interpertation.html)]
 
 
 <!-- <hr />
@@ -68,22 +67,22 @@ Based on our pipeline, we perform unsupervised prompt distillation using the unl
 The source model is trained on ImageNet. "ZSL" denotes the setting type for Zero-Shot Learning.
 </figure>
 
-## Model Zoo
+## Running
+
+### Prerequisite
 
 1. Create the environment and install Dassl.pytorch library. Please follow the instructions detailed in [INSTALL.md](docs/INSTALL.md).
 
 2. Pre-train your own large teacher CLIP model or use our publicly released pre-trained teacher ViT-L/14 CLIP models. After obtaining the teacher model, place the model in the `./teacher_models` folder.  
-Our pre-trained teacher models are available at [[Baidu Yun]()] [[TeraBox]()]
+Our pre-trained teacher models are available at [[Baidu Yun]()] [[TeraBox]()] [[Google Cloud]()]
+(We only provide some models in Google Cloud due to cloud space limitations. Sorry.)
 
-3. Prepare the dataset. Please follow the instructions detailed in [DATASETS.md](docs/DATASETS.md).
+3. Download the pretrained ViT-B/16 and ViT-L/14 CLIP models from official OpenAI website. Then place these models in the `./clip` folder.  
+[[ViT-B/16 CLIP](https://openaipublic.azureedge.net/clip/models/5806e77cd80f8b59890b7e101eabd078d9fb84e6937f9e85e4ecb61988df416f/ViT-B-16.pt)] [[ViT-L/14 CLIP](https://openaipublic.azureedge.net/clip/models/b8cca3fd41ae0c99ba7e8951adf17d267cdb84cd88be6f7c2e0eca1737a03836/ViT-L-14.pt)]
 
+4. Prepare the dataset. Please follow the instructions detailed in [DATASETS.md](docs/DATASETS.md).
 
-
-
-## Runing
-
-
-
+### Run the script
 
 
 
@@ -91,6 +90,14 @@ Our pre-trained teacher models are available at [[Baidu Yun]()] [[TeraBox]()]
 ## Contact
 
 For any questions, please contact me via email (zhengli97[at]mail.nankai.edu.cn)
+
+### Citation
+
+If you find our paper or repo is helpful for your research, please consider citing our paper and giving this repo a ⭐.
+
+<!-- ```
+
+``` -->
 
 ## Acknowledgements
 
