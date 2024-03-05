@@ -69,15 +69,16 @@ The source model is trained on ImageNet. "ZSL" denotes the setting type for Zero
 
 ## Running
 
-### Prerequisite
+### Preliminary
 
 1. Create the environment and install Dassl.pytorch library. Please follow the instructions detailed in [INSTALL.md](docs/INSTALL.md).
 
-2. Pre-train your own large teacher CLIP model or use our publicly released pre-trained teacher ViT-L/14 CLIP models. After obtaining the teacher model, place the model in the `./teacher_models` folder.  
-Our pre-trained teacher models are available at [[Baidu Yun]()] [[TeraBox]()] [[Google Cloud]()]
-(We only provide some models in Google Cloud due to cloud space limitations. Sorry.)
+2. (1) Pre-train your own large teacher CLIP model or (2) use our publicly released pre-trained teacher ViT-L/14 CLIP models. (Highly Recommended)   
+After obtaining the teacher model, unzip these files and place the model in the `./teacher_models` folder.   
+Our pre-trained teacher models are available at [Baidu Yun] [[TeraBox](https://terabox.com/s/1X4mxJtSaR8W2lrK5bsrCkg)] [Google Cloud]   
+(Note that due to cloud space limitations, we only provide some models in Google Cloud. Sorry.)   
 
-3. Download the pretrained ViT-B/16 and ViT-L/14 CLIP models from official OpenAI website. Then place these models in the `./clip` folder.  
+3. Download the original ViT-B/16 and ViT-L/14 CLIP model weights from the official OpenAI website. Then place these models in the `./clip` folder.  
 [[ViT-B/16 CLIP](https://openaipublic.azureedge.net/clip/models/5806e77cd80f8b59890b7e101eabd078d9fb84e6937f9e85e4ecb61988df416f/ViT-B-16.pt)] [[ViT-L/14 CLIP](https://openaipublic.azureedge.net/clip/models/b8cca3fd41ae0c99ba7e8951adf17d267cdb84cd88be6f7c2e0eca1737a03836/ViT-L-14.pt)]
 
 4. Prepare the dataset. Please follow the instructions detailed in [DATASETS.md](docs/DATASETS.md).
@@ -89,9 +90,9 @@ Our pre-trained teacher models are available at [[Baidu Yun]()] [[TeraBox]()] [[
 
 ## Contact
 
-For any questions, please contact me via email (zhengli97[at]mail.nankai.edu.cn)
+For any questions, please contact me via email (zhengli97[at]mail.nankai.edu.cn).
 
-### Citation
+## Citation
 
 If you find our paper or repo is helpful for your research, please consider citing our paper and giving this repo a ⭐.
 
