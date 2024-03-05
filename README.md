@@ -75,7 +75,7 @@ The source model is trained on ImageNet. "ZSL" denotes the setting type for Zero
 
 2. (1) Pre-train your own large teacher CLIP model or (2) use our publicly released pre-trained teacher ViT-L/14 CLIP models. (Highly Recommended)   
 After obtaining the teacher model, unzip these files and place the model in the `./teacher_models` folder.   
-Our pre-trained teacher models are available at [Baidu Yun] [[TeraBox](https://terabox.com/s/1X4mxJtSaR8W2lrK5bsrCkg)] [Google Cloud]   
+Our pre-trained teacher models are available at [[Baidu Yun](https://pan.baidu.com/s/1KNJ1mhNKoxdSli4ZldeZUg?pwd=mjf4)] [[TeraBox](https://terabox.com/s/1X4mxJtSaR8W2lrK5bsrCkg)] [[Google Cloud](https://drive.google.com/drive/folders/1OdQ9WauZmYAzVSUTTw7tIKKChyECIS5B?usp=sharing)]   
 (Note that due to cloud space limitations, we only provide some models in Google Cloud. Sorry.)   
 
 3. Download the original ViT-B/16 and ViT-L/14 CLIP model weights from the official OpenAI website. Then place these models in the `./clip` folder.  
@@ -83,10 +83,55 @@ Our pre-trained teacher models are available at [Baidu Yun] [[TeraBox](https://t
 
 4. Prepare the dataset. Please follow the instructions detailed in [DATASETS.md](docs/DATASETS.md).
 
-### Run the script
+### Running PromptKD 
 
+#### (1) Base-to-Novel Experiments.
 
+1. The base-to-novel experimental settings are provided in config file at `configs/trainers/PromptKD/vit_b16_c2_ep20_batch8_4+4ctx.yaml`. You can modify the hyper-parameteres in this config file according to your needs.
 
+2. Change the dataset path in `scripts/promptkd/base2new_train.sh line 4` to your current path.
+
+3. Run the commands below to train PromptKD on specified dataset.
+
+```
+# dataset=imagenet, seed=1 
+sh scripts/promptkd/base2new_train.sh imagenet 1
+
+# seed=2
+sh scripts/promptkd/base2new_train.sh imagenet 2
+
+# seed=3
+sh scripts/promptkd/base2new_train.sh imagenet 3
+
+# dataset=caltech101, seed=1
+sh scripts/promptkd/base2new_train.sh caltech101 1
+```
+
+4. The output results will be automatically save at `output/base2new/train_base/${DATASET}/shots_${SHOTS}/${TRAINER}/${CFG}/seed_${SEED}`.
+
+#### (2) Cross-dataset Experiments.
+
+1. The cross-dataset experimental settings are provided in config file at `configs/trainers/PromptKD/vit_b16_c2_ep20_batch8_4+4ctx_cross_datasets.yaml`. You can modify the hyper-parameteres in this config file according to your needs.
+
+2. Change the dataset path in `scripts/promptkd/base2new_train.sh line 4` to your current path.
+
+3. Run the commands below to train PromptKD on specified dataset.
+
+```
+# dataset=caltech101, seed=1 
+sh scripts/promptkd/xd_train.sh caltech101 1
+
+# seed=2
+sh scripts/promptkd/xd_train.sh caltech101 2
+
+# seed=3
+sh scripts/promptkd/xd_train.sh caltech101 3
+
+# dataset=oxford_pets, seed=1
+sh scripts/promptkd/base2new_train.sh oxford_pets 1
+```
+    
+4. The output results will be automatically saved at `output/${DATASET}/${TRAINER}/${CFG}_${SHOTS}shots/seed${SEED}`.
 
 ## Contact
 

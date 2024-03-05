@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # custom config
 DATA='/path/to/dataset/folder'
 TRAINER=PromptKD
