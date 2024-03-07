@@ -99,7 +99,7 @@
                     <span class="icon">
                       <i class="fab fa-github"></i>
                     </span>
-                    <span>Code</span>
+                    <span>Code + Pretrained Models</span>
                   </a>
                   </span>
 
@@ -112,13 +112,59 @@
                     </span>
                     <span>中文解读</span>
                 </a>
+
                 <br><br><br>
+
+                <div class="columns is-centered has-text-centered">
+                  <div class="column is-five-fourths width:100%" >
+                    <h2 class="title is 2">A simple and effective prompt-driven unsupervised distillation framework for VLMs, with state-of-the-art performance.</h2>
+                  </div>
+                </div>
+                <br>            
+
+                <div class="column is-five-fifths width:100%" >
+                  <h2 class="title is 5">Highlights</h2>
+                  <div class="content has-text-centered" style="word-break:normal" >
+                    <p>
+                      (1). A novel two-stage unsupervised prompt distillation framework for Vision-Language Models.<p>
+                      (2). Reuse high-quality teacher text features instead of training the student's own text encoder. <p>
+                      (3). Distillation on large amounts of unlabeled domain images using soft labels provided by the teacher.<p>
+                      (4). PromptKD outperforms all existing prompt learning methods on 11 diverse recognition datasets.
+                    </p>
+                  </div>
+                </div>
+
+                <br>
+                <div class="columns is-centered has-text-centered">
+                  <div class="column is-four-fifths" >
+                    <a href="https://paperswithcode.com/sota/prompt-engineering-on-caltech-101?p=promptkd-unsupervised-prompt-distillation-for"><img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/promptkd-unsupervised-prompt-distillation-for/prompt-engineering-on-caltech-101"></a>
+                    <a href="https://paperswithcode.com/sota/prompt-engineering-on-dtd?p=promptkd-unsupervised-prompt-distillation-for"><img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/promptkd-unsupervised-prompt-distillation-for/prompt-engineering-on-dtd"></a>
+                    <!-- <br> -->
+                    <a href="https://paperswithcode.com/sota/prompt-engineering-on-eurosat?p=promptkd-unsupervised-prompt-distillation-for"><img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/promptkd-unsupervised-prompt-distillation-for/prompt-engineering-on-eurosat"></a>
+                    <a href="https://paperswithcode.com/sota/prompt-engineering-on-fgvc-aircraft?p=promptkd-unsupervised-prompt-distillation-for"><img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/promptkd-unsupervised-prompt-distillation-for/prompt-engineering-on-fgvc-aircraft"></a>
+                    <a href="https://paperswithcode.com/sota/prompt-engineering-on-food-101?p=promptkd-unsupervised-prompt-distillation-for"><img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/promptkd-unsupervised-prompt-distillation-for/prompt-engineering-on-food-101"></a>
+                    <a href="https://paperswithcode.com/sota/prompt-engineering-on-imagenet?p=promptkd-unsupervised-prompt-distillation-for"><img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/promptkd-unsupervised-prompt-distillation-for/prompt-engineering-on-imagenet"></a>
+                    <a href="https://paperswithcode.com/sota/prompt-engineering-on-oxford-102-flower?p=promptkd-unsupervised-prompt-distillation-for"><img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/promptkd-unsupervised-prompt-distillation-for/prompt-engineering-on-oxford-102-flower"></a>
+                    <a href="https://paperswithcode.com/sota/prompt-engineering-on-stanford-cars-1?p=promptkd-unsupervised-prompt-distillation-for"><img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/promptkd-unsupervised-prompt-distillation-for/prompt-engineering-on-stanford-cars-1"></a>
+                    <a href="https://paperswithcode.com/sota/prompt-engineering-on-oxford-iiit-pet-dataset?p=promptkd-unsupervised-prompt-distillation-for"><img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/promptkd-unsupervised-prompt-distillation-for/prompt-engineering-on-oxford-iiit-pet-dataset"></a>
+                    <a href="https://paperswithcode.com/sota/prompt-engineering-on-sun397?p=promptkd-unsupervised-prompt-distillation-for"><img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/promptkd-unsupervised-prompt-distillation-for/prompt-engineering-on-sun397"></a>
+                    <!-- <br> -->
+                    <a href="https://paperswithcode.com/sota/prompt-engineering-on-ucf101?p=promptkd-unsupervised-prompt-distillation-for"><img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/promptkd-unsupervised-prompt-distillation-for/prompt-engineering-on-ucf101"></a>    
+                  </div>
+                </div>
+
                 <figure>
+                  <div class="columns is-centered has-text-centered">
+                    <div class="column is-four-fifths width:100%" >
+                     </div>
+                  </div>
                   <img src="static/images/framework2.png" alt="fail" width="100%"">
-                  <figcaption class="content has-text-left"  style="word-break:normal">Figure 1. Architecture comparison between classic KD paradigm for CLIP (likewise CLIP-KD) and our PromptKD. 
-                    <strong>(a)</strong> Classic KD methods perform distillation between independent teacher and student models. 
-                    <strong>(b)</strong> PromptKD breaks the rules of teacher-student independence. 
-                    We propose to reuse the previously well-trained text features from the teacher pre-training stage and incorporate them into the student image encoder for both distillation and inference.</figcaption>
+                  <figcaption class="content has-text-justified"  style="word-break:normal">Figure 1. Architecture comparison between classic KD paradigm for CLIP (likewise CLIP-KD) and our PromptKD. 
+                    Compared to previous KD methods that performs distillation between <strong>independent</strong> teacher and student models, our PromptKD <strong> breaks the rules of teacher-student independence </strong>.
+                    We propose to reuse the previously well-trained text features from the teacher pre-training stage and incorporate them into the student image encoder for both distillation and inference.
+                  </figcaption>
+                    <!-- <strong>(a)</strong> Classic KD methods perform distillation between independent teacher and student models. 
+                    <strong>(b)</strong> PromptKD breaks the rules of teacher-student independence.  -->
                 </figure>
                 <br>
                 <figure>
@@ -145,9 +191,6 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p class="auto-wrap">
-            Prompt learning has emerged as a valuable technique in enhancing vision-language models (VLMs) such as CLIP for downstream tasks in specific domains. 
-            Existing work mainly focuses on designing various learning forms of prompts, neglecting the potential of prompts as effective distillers for learning from larger teacher models. 
-            <br><br>
             In this paper, we introduce an unsupervised domain prompt distillation framework, which aims to transfer the knowledge of a larger teacher model to a lightweight target model through prompt-driven imitation using unlabeled domain images. 
             <br><br>
             Specifically, our framework consists of two distinct stages. In the initial stage, we pre-train a large CLIP teacher model using domain (few-shot) labels. 
@@ -168,7 +211,7 @@
   </div>
 </section>
 
-<section class="section">
+<!-- <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths" >
@@ -184,8 +227,7 @@
       </div>
     </div>
   </div>
-</section>
-
+</section> -->
 
 <section class="section hero is-light">
   <div class="container is-max-desktop">
@@ -195,14 +237,14 @@
         <div class="content has-text-justified" style="word-break:normal" >
           <p>
             (1). We provide an efficient and simple CLIP distillation framework that can compress the knowledge of the ViT-L/14 CLIP model into the smaller ViT-B/16 CLIP model through prompt distillation.
-            Notably, after distillation, the smaller ViT-B/16 CLIP model even achieves better performance than the vanilla ViT-L/14 CLIP on ImageNet-1K (77.62 HM vs. 76.52 HM).
+            Notably, after distillation, <strong> the smaller ViT-B/16 CLIP model achieves better performance than the vanilla ViT-L/14 CLIP on ImageNet-1K (77.62 HM vs. 76.52 HM)</strong>.
             <p>
             (2). Due to the characteristics of CLIP, the text encoder only requires a single forward calculation for all classes.
-            Inspired by this, we propose to reuse the existing higher-quality teacher text features instead of training the student's own text encoder.
+            Inspired by this, <strong>we propose to reuse the existing higher-quality teacher text features instead of training the student's own text encoder.</strong>
              This approach not only maintains the quality of the text features but also significantly reduces computational costs and memory usage during training. 
             <p>
             (3). The existence of the teacher CLIP model liberates us from the need for labeled training samples. 
-            Learning from large amounts of unlabeled domain images, which is easily accessible, allows the prompt to learn richer and more generalized domain representations.
+            <strong>Learning from large amounts of unlabeled domain images, which is easily accessible, allows the prompt to learn richer and more generalized domain representations.</strong>
             This significantly enhances student performance and makes our method easier to apply in real world scenarios.
           </p>
         </div>
@@ -233,6 +275,7 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Experimental Results</h2>
+
         <div class="content has-text-left is-size-5">
         <strong>Base-to-Novel Experiments</strong>
         </div>
