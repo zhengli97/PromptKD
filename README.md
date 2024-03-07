@@ -9,15 +9,21 @@
 > [[Paper](https://arxiv.org/abs/2403.02781)] [[Project Page](https://zhengli97.github.io/PromptKD)] [[中文解读](https://zhengli97.github.io/PromptKD/chinese_interpertation.html)]
 
 
-<!-- <hr />
+<hr />
 
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/self-regulating-prompts-foundational-model/prompt-engineering-on-imagenet)](https://paperswithcode.com/sota/prompt-engineering-on-imagenet?p=self-regulating-prompts-foundational-model)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/self-regulating-prompts-foundational-model/prompt-engineering-on-imagenet-v2)](https://paperswithcode.com/sota/prompt-engineering-on-imagenet-v2?p=self-regulating-prompts-foundational-model)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/self-regulating-prompts-foundational-model/prompt-engineering-on-sun397)](https://paperswithcode.com/sota/prompt-engineering-on-sun397?p=self-regulating-prompts-foundational-model)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/self-regulating-prompts-foundational-model/prompt-engineering-on-ucf101)](https://paperswithcode.com/sota/prompt-engineering-on-ucf101?p=self-regulating-prompts-foundational-model)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/self-regulating-prompts-foundational-model/prompt-engineering-on-fgvc-aircraft-1)](https://paperswithcode.com/sota/prompt-engineering-on-fgvc-aircraft-1?p=self-regulating-prompts-foundational-model)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/promptkd-unsupervised-prompt-distillation-for/prompt-engineering-on-caltech-101)](https://paperswithcode.com/sota/prompt-engineering-on-caltech-101?p=promptkd-unsupervised-prompt-distillation-for)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/promptkd-unsupervised-prompt-distillation-for/prompt-engineering-on-dtd)](https://paperswithcode.com/sota/prompt-engineering-on-dtd?p=promptkd-unsupervised-prompt-distillation-for)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/promptkd-unsupervised-prompt-distillation-for/prompt-engineering-on-eurosat)](https://paperswithcode.com/sota/prompt-engineering-on-eurosat?p=promptkd-unsupervised-prompt-distillation-for)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/promptkd-unsupervised-prompt-distillation-for/prompt-engineering-on-fgvc-aircraft)](https://paperswithcode.com/sota/prompt-engineering-on-fgvc-aircraft?p=promptkd-unsupervised-prompt-distillation-for)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/promptkd-unsupervised-prompt-distillation-for/prompt-engineering-on-food-101)](https://paperswithcode.com/sota/prompt-engineering-on-food-101?p=promptkd-unsupervised-prompt-distillation-for)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/promptkd-unsupervised-prompt-distillation-for/prompt-engineering-on-imagenet)](https://paperswithcode.com/sota/prompt-engineering-on-imagenet?p=promptkd-unsupervised-prompt-distillation-for)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/promptkd-unsupervised-prompt-distillation-for/prompt-engineering-on-oxford-102-flower)](https://paperswithcode.com/sota/prompt-engineering-on-oxford-102-flower?p=promptkd-unsupervised-prompt-distillation-for)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/promptkd-unsupervised-prompt-distillation-for/prompt-engineering-on-oxford-iiit-pet-dataset)](https://paperswithcode.com/sota/prompt-engineering-on-oxford-iiit-pet-dataset?p=promptkd-unsupervised-prompt-distillation-for)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/promptkd-unsupervised-prompt-distillation-for/prompt-engineering-on-stanford-cars-1)](https://paperswithcode.com/sota/prompt-engineering-on-stanford-cars-1?p=promptkd-unsupervised-prompt-distillation-for)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/promptkd-unsupervised-prompt-distillation-for/prompt-engineering-on-sun397)](https://paperswithcode.com/sota/prompt-engineering-on-sun397?p=promptkd-unsupervised-prompt-distillation-for)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/promptkd-unsupervised-prompt-distillation-for/prompt-engineering-on-ucf101)](https://paperswithcode.com/sota/prompt-engineering-on-ucf101?p=promptkd-unsupervised-prompt-distillation-for)
 
-<hr /> -->
+<hr />
 
 
 ### Abstract
