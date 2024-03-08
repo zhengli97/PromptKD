@@ -4,7 +4,7 @@
 
 
 > [**PromptKD: Unsupervised Prompt Distillation for Vision-Language Models**]() <br>
-> Zheng Li, Xiang Li*, Xinyi Fu, Xing Zhang, Weiqiang Wang, Shuo Chen, Jian Yang*. <br>
+> Zheng Li, Xiang Li*, Xinyi Fu, Xin Zhang, Weiqiang Wang, Shuo Chen, Jian Yang*. <br>
 > CVPR 2024 <br>
 > [[Paper](https://arxiv.org/abs/2403.02781)] [[Project Page](https://zhengli97.github.io/PromptKD)] [[中文解读](https://zhengli97.github.io/PromptKD/chinese_interpertation.html)]
 
@@ -143,7 +143,7 @@ sh scripts/promptkd/base2new_train.sh oxford_pets 1
     
 4. The output results will be automatically saved at `output/${DATASET}/${TRAINER}/${CFG}_${SHOTS}shots/seed${SEED}`.
 
-## Model Zoo
+## Model Zoo (TBD)
 
 We will provide training logs and completed model files for your reference. Please wait.
 
