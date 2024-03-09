@@ -57,12 +57,6 @@ Results reported below show accuracy for base and novel classes for across 11 re
 <figcaption class="content has-text-left" style="word-break:normal">Table 1. Comparison with existing state-of-the-art methods on base-to-novel generalization. Our PromptKD demonstrates strong generalization ability and achieves significant improvements on 11 recognition datasets given the <strong> ViT-B/16 image encoder</strong> of the CLIP model. The symbol △ denotes the performance improvement compared to the previous SOTA method.
 </figure>
 
-<figure>
-<img src="images/hm_score.png" alt="fail" width="50%"">
-<figcaption class="content has-text-centered" style="word-break:normal">Figure 1. Harmonic mean (HM) comparison on base-to-novel generalization.
-</figure>
-
-
 ### Cross Dataset
 
 <figure>
