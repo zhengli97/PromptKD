@@ -69,49 +69,116 @@
 
 
 <section class="section hero is-light">
-  <div class="container is-max-desktop">
+  <div class="container is-max-desktop ">
     <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths" style="width:100%">
-        <!-- <h2 class="title is-4">摘要</h2> -->
+      <div class="column is-four-fifths">
+        <h2 class="title is-4">一句话概括</h2>
         <div class="content has-text-justified">
           <p>
-            作者正在使用洪荒之力，努力写解读中...
-        </p>
+            PromptKD是一个简单有效的基于prompt的视觉语言模型蒸馏新方法，在prompt learning的11个benchmark数据集上大幅领先，达到了SOTA。
+          </p>
+          <h2 class="title is-4">大白话背景介绍</h2>
+        
+          <p>已经很了解VLMs和prompt learning的同学可以直接跳过，到<strong>背景问题</strong>～</p>
+          <p>这里的介绍目的是让没有相关基础和背景的同学也可以看懂这篇工作，能有所收获。</p>
+
+          <p><strong>什么是视觉-语言模型(Vision-Language Models, VLMs)？</strong></p>
+          <p>视觉语言模型VLM一般由两个部分构成，即视觉(Vision)部分和语言(Language)部分。以一个经典的VLM网络 CLIP[1] 的结构为例：</p>
+          
+          <figure>
+            <img src="static/interpretation_images/fig1_clip.png" alt="图挂了= =" width="70%">
+            <figcaption>图1.CLIP架构。图片来自于CLIP论文。</figcaption>
+          </figure>
+
+          <p>如图1所示，CLIP由text branch和image branch组成。</p>
+
+          <p>其中，text branch主要由transformer构成，当要进行cls_num个类的分类任务时，会取每个类别对应的名称，如"plane", "car", "dog"，与"a photo of a"进行组合，作为prompt输入进text encoder，得到大小为[cls_num, feat_dim]的text feature。
+
+          <p>image branch的核心就是对输入的图像提取image feature，其通常为ResNet或者ViT[2]。图像经过image encoder之后得到image feature，其大小为[batch_size, feat_dim]。
+
+          <p>将两个feature进行相乘就得到了预测logits。
+
+          <p>CLIP有两个明确的特性，是这个工作的基础：
+
+          <p>1. CLIP可以进行zero-shot分类，即对未见过的类别进行识别，并保持很高的性能。而传统的CNN或者ViT由于模型架构限制不可以。
+          <p> 2.对于已知的类别，CLIP的text branch只需要一次forward就可以得到对应text feature用于分类。
+
+          <strong><p>什么是提示学习(Prompt Learning)？</p></strong>
+
+          <p>在Text Branch部分中，a photo of a {class_name} 这样的描述太过宽泛，明显不是最优的。例如对于图2(b)的花，手工设计的a flower photo a {class}要描述的更加精确，其产生的结果就更好。</p>
+
+          <figure>
+            <img src="static/interpretation_images/fig2_prompt.png" alt="图挂了= =" width="100%">
+            <figcaption>图2.蓝色方块代表手动设计的prompt，绿色方块代表网络学习得到的learnable prompt。绿色方块acc超越了蓝色。图片来自于CoOp论文。</figcaption>
+          </figure>
+
+          <p>这就产生来两个问题，第一，固定模板的prompt不是最优的。第二，针对性的手工设计费时费力，且无法泛化。
+
+          <p>于是，提示学习(Prompt Learning)[3] [4]就提出将prompt变成了一种learnable的方式，通过优化的方法让prompt在下游数据集上学习适用的表征，来替代手工设计的prompt，参考图2中的绿色方块。
+
+          <p>这样优势是，可以在少量数据的情况下，仅通过引入一少部分的可学习参数（即learnable prompt），就可以将原始的CLIP快速适用到下游的任务/数据，同时在性能上比全参数微调的结果更好[4]。
+
+          <strong><p>实验衡量指标是什么？</p></strong>
+
+          <p>有三个指标，分别是base acc，novel acc和harmonic mean。</p>
+
+          <p>以imagenet-1k数据集为例，会取1000类中的前500类作为base class，后500类作为novel class。模型在base class上训练，完成后在base class和novel class上测试acc性能。因为novel class与base class数据类别不重复，所以novel acc可以有效反应模型泛化性能。harmonic mean指标是对base acc和novel acc的综合反映，为harmonic mean = (2*base acc*novel acc) / (base acc+novel acc)。总体的harmonic mean值越高，模型综合性能越好。
+
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- <section class="section">
+<section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <div class="content has-text-justified">
         <p>
-        <h2 class="title is-3">背景：</h2>
-        <p>
-          主流的2D姿态估计方法大多数都是基于Hourglass Network(HG)。
-          其含有多个堆叠的Hourglass，通常有2-stack, 4-stack, 8-stack类型。
-          后一个Hourglass将前一个Hourglass的结果作为输入，不断进行refine，直到结尾。
-          8-stack的结果要明显好于4-stack，但是与之而来的问题就是计算量明显的增加。
-        <p>
-          FPD (CVPR 19')首先提出，利用传统的蒸馏(KD)方法，
-          首先训一个8-stack HG作为teacher，选择一个4-stack HG作为student，然后进行KD。参考Fig. 1。
+        <h2 class="title is-3">背景问题</h2>
+        <p>prompt learning的核心作用是，保持原始CLIP参数不变，通过引入小部分learnable prompt参数，来将大的原始的经过预训练的CLIP模型适用到下游任务/数据上，提升CLIP模型在下游任务的性能，同时保持CLIP模型zero-shot能力。
+
+        <p>除去一直发展至今的各种设计prompt形式的工作[3] [5] [6] [7] [8] [9] [10] [11] [12] [13]，现如今最前沿的prompt learning方法主要还可以分为另外<strong>两类</strong>：
+          
+        <strong><p>1. 引入额外数据/信息。这一类工作核心就是通过引入额外的数据或信息，做法包括但不限于，</p></strong>
+          
+        <p>(1).通过LLM来生成{class_name}相关的语句，获得额外的有关{class_name}的特性 特征[14] [15] [16]，或者更多描述性语句[17] [18] [19] [20]。</p>
+          
+        <p>(2).引入额外的数据源，从wikipedia上引入文本描述[21]，从额外数据集例如ImageNet-21K来做预训练 [22]。
+          
+        <p>(3).设计给原始图像数据引入额外的tag或标注[23] [24] [25]。
+          
+        <p>从以上的方式我们看到，大部分引入额外数据信息的工作都是围绕text branch展开，本质原因是输入的text本身"{class_name}"或"a photo of a {classname}"包含信息太少，丰富度要远低于image，通过额外的域内文本信息的引入，可以显著增强text feature的质量。
+        <strong>所以text feature的质量是关键。</strong>
+          
+        <p>同时，可以看到，围绕image branch的工作是相对较少的。这时候问题就来了：那我们可不可以用同样的思路来增强image feature呢？
+          
+        <p>诶，这个方法好！因为互联网内往往存在非常大量的图像数据，很容易获取。
+          
+        <strong><p>但问题是这些图像往往是没有标注的，没办法用gt训，如果要去进行标注，需要消耗很多的时间或者钱。明显限制了这种方式的应用。</p></strong>
+          
+        <strong><p>2. 利用原始CLIP自身信息约束模型学习[19] [26] [27] [28] [29] [30] [31]，防止过拟合。</p></strong>
+        <br>
+        <p>在Prompt learning中，learnable prompt的参数量是相对较少的，在经过大量base class数据训练之后，模型会对base class数据存在过拟合，丧失对novel class的泛化性能。要解决这个问题，一种非常有效的做法就是利用vanilla CLIP来约束带有prompt的模型的学习。</p>
+          
+        <p>以ICCV 23 PromptSRC为例，如图3所示，</p>
+
         <figure>
-          <img src="static/images/fpd_framework.png" alt="">
-          <figcaption> Fig.1 FPD的总体结构。</figcaption>
+          <img src="static/interpretation_images/fig3_promptsrc.png" alt="图挂了= =" width="90%">
+          <figcaption>图3.PromptSRC结构图。图片来自于PromptSRC论文。</figcaption>
         </figure>
-        <p>
-          <strong>那么这篇工作明显存在着几点问题：</strong>
-        <p>
-          (1) 第一步训teacher，第二步训student，整体是一个two-stage的过程，较为繁琐。
-        <p>
-          (2) 如果要利用FPD训练一个8-stack HG的student，就需要找到一个比8-stack更高的model去作为teacher。
-          堆叠更多的HG会存在性能收益递减，并且带来计算量直线上升。
-        <p>
-          (3) KD过程中同时使用Mean Squared Error(MSE)作为传统任务的监督loss和kd loss，
-          训练时一个output同时针对两个target进行优化会带来明显的冲突。
+
+        <p>图3这篇工作就看两条线，蓝线和灰线。</p>
+
+        <p>蓝线，就是原始CLIP的前向计算路径，分别会得到对应的image和text feature。</p>
+
+        <p>灰线，就是带有learnable prompt的计算过程，也会得到对应的feature。</p>
+
+        <p>在两条线的末尾，计算了三个loss，这里就是用原始CLIP产生的image和text feature来约束由含有learnable prompt产生的image和text feature。通过这样的约束，限制了prompt向着base class过拟合，达到了SOTA的性能。</p> 
+
+        <strong><p>由这个工作我们就想，如果换一个更好的模型来做约束是不是性能会更好？</p></strong>
+        
         </p>
       </div>
     </div>
@@ -125,61 +192,56 @@
       <div class="column is-four-fifths">
         <div class="content has-text-justified">
         <p>
-        <h2 class="title is-3">方法：</h2>
-          <figure>
-            <img src="static/images/comparison.png" alt="" width="80%">
-            <figcaption> Fig.2 方法结构对比。</figcaption>
-          </figure>
-          <p>
-          由以上的几个问题就引出了我们ICCV 2021的工作，我们首先提出了利用在线知识蒸馏的方法去对网络进行训练。
-          用大白话来概括一下工作的几个核心：
-          <p>
-          <strong>(1). 我们提出了一个在线知识蒸馏的框架，即一个多分支结构。</strong>这里的teacher不是显式存在的，
-          而是通过多个学生分支的结果经过了FAU的ensemble形成的，即established on the fly，
-          我们利用ensemble得到的结果（拥有更高的准确率）来扮演teacher的角色，来KD每个的学生分支，即在Fig.2 (b)中的三个小分支。
-          <p>
-          具体来说就是，如果要得到一个4-stack HG的网络，FPD的方式如(a)所示，先训练一个8-stack，然后进行KD。
-          而在我们的方法，如图(b)，直接建立一个多分支网络（图中为3个分支），其中每个分支视为student，
-          要得到一个4-stack HG，那么我们选择在前部share 2个stack（节约计算量），后面针对每一个branch，
-          我们将剩下的2个stack HG独立出来，以保持diversity。三个分支产生的结果经过FAU进行ensemble，
-          得到的ensemble heatmap再KD回每一个student分支。
-          <p>
-          我们的方法带来的直接的好处就是，整个的KD过程被简化到了one-stage，并且不需要手动的选择一个更高performance的teacher来进行KD。
-          Online KD的方法直接训练完了之后，选择一个最好性能的分支，去除掉其他多余分支结构即可得到一个更高acc的目标HG网络。
-          <p>
-          那么从这里也可以直接看出我们的多分支网络更省计算量，粗略的算，FPD的方法总共会需要8+4=12个stack参与计算，
-          我们的方法，只会有2x4=8个stack进行计算。
-          <p>
-          （针对diversity的问题提一下，在OKDDip中就有提及，针对这样的一个多分支模型，每个分支之间的diversity是需要考虑的，
-          对于每个分支，如果共享的stage过多，那么留给剩下分支的优化空间就会被明显缩小，分支之间在训练的过程中会显式的趋于同质化，
-          进而带来的结果就是ensemble结果准确率的下降。与之相反，独立的HG数量越多也可以带来KD性能的提升，分支数量同理，
-          详情请参考paper中的Table 7和8，这里不详细列出。我们在paper中将共享的HG数量设定为目标网络HG数量的一半，
-          即目标网络8-stack，整个网络就共享4-stack。）
-          <p>
-          <strong>(2). 既然是一个多分支结构，那么每个分支的情况可不可以是adaptive的？</strong>既然在分支里更多的stack可以产生更好的heatmap，
-          那么必然也就会带来ensemble结果的提升，进而KD的效果就会更好。于是针对(b)的这种每个分支都是一样的balance的结构，
-          我们更进一步提出了unbalance结构。
-          <p>
-          具体的来说，要KD得到一个4-stack HG，即Fig.2 (c)中的第一个branch，2+2=4个stack的主分支，
-          通过在辅助分支堆叠更多的HG来产生更好的ensemble结果，这里就是第二个分支是2+4=6个stack，第三个分支2+6=8个stack的情况。
-          <p>
-          在不考虑训练计算量的情况下，在部署时移除辅助分支，相比于balance结构，可以得到更好的main branch，即目标的4-stack HG。
-          <p>
-          <strong>(3). 这里的FAU，即Feature Aggregation Unit，是用来对每个分支产生的结果进行一个带有weight的channel-wise的ensemble。</strong>
-          即将每个heatmap按照生成的权重进行集成。具体的结构如Fig.3所示。
-          <figure>
-            <img src="static/images/fau.png" alt="" width="100%">
-            <figcaption> Fig.3 FAU结构。</figcaption>
-          </figure>
-          <p>
-          针对人体姿态估计这种场景下，其实是存在着很多的尺度变化问题，就比如一个人在一张图片中，既可以是贴的很近，占满了整张图片，
-          也可以是离得很远，只在图片中占小小的一个部分。
-          <p>
-          受到SKNet的启发，在原先的3x3, 5x5的基础上，
-          我们拓展出了7x7和avg pool来捕捉更大范围的信息，进而来生成对应每个分支产生的heatmap的weight。
-          消融实验证明了FAU确实是要比普通的attention方法提高更多。（小声：avg pool这branch我做了实验试了一下，有一丁丁的提升，灰常小）
-        <p>
-        </p>
+        <h2 class="title is-3">方法</h2>
+        <p>于是，这就引出了我们的工作。</p>
+
+        <p><strong>PromptKD其实核心就在做一件事，引入更大的CLIP模型作为teacher，解决了上面提到的三个问题。</strong></p>
+        
+        <p>(1) 重用(Reuse) teacher CLIP产生的text feature用于学生的训练和推断。这样确保了text feature高质量的同时，还显著的节省计算量，训练时只涉及student的image encoder。
+        
+        <p>(2) 对齐学生CLIP和教师CLIP的logits。让大的CLIP模型给小的学生CLIP模型提供更好的监督。
+        
+        <p>(3) 因为有了教师CLIP的存在，就解决了数据量限制的问题，我们可以用大量的无标签domain data来训学生，不再拘泥于原来有限的有标签数据。在训练时，我们直接可以使用数据集的全量数据作为无标签数据进行蒸馏，这样一来就prompt就可以学到更广泛的domain knowledge。同时高性能的教师CLIP也保证了用于蒸馏的软标签的准确性。
+        
+        <strong><p>我们先来看一个简单的结构缩略图：</p></strong>
+
+        <figure>
+          <img src="static/interpretation_images/fig4_promptkd_short.png" alt="图挂了= =" width="70%">
+          <figcaption>图4. PromptKD框架简略图。</figcaption>
+        </figure>
+
+        <p>黄色的方块部分代表的就是教师CLIP，在教师CLIP经过训练之后，直接一次forward，得到并保存下来对应类别的text feaure，也就得到了图4中的Pre-stored Text Feature。
+
+        <p>蓝色的方块代表的是学生CLIP，这里其实就只有一个image encoder，在带有learnablr prompt的输入进入image encoder之后会得到对应的image feature，这是因为与teacher text feature在维度上不匹配，所以经过一个Projector，将512转成768维的特征。然后再与Pre-stored Text Feature相乘，得到logits。
+
+        <p>然后进行蒸馏。
+
+        <p>完整的框架图如图5所示：
+        
+        <figure>
+          <img src="static/interpretation_images/fig5_promptkd_overview.png" alt="图挂了= =" width="100%">
+          <figcaption>图5. PromptKD整体框架图。</figcaption>
+        </figure>
+
+        <p>图5里就是图4过程的细化。
+
+        <p>这里将PromptKD的每个阶段都进行了详细的阐明。大家看图就明白了～
+
+        <p>第一阶段，教师模型的预训练。在这里，我们选择之前的SOTA方法PromptSRC去预训练我们的教师ViT-L/14 CLIP模型，我们的学生模型是ViT-B/16 CLIP模型。
+
+        <p>注意，这里的预训练不是必须的一步，选择去预训练教师模型，是为了让教师有一个更好的性能，从而有更好的学生蒸馏结果。如果直接使用vanilla ViT-L/14 CLIP作为教师，相比于baseline，也取得了明显的性能提升，具体结果请参考表4。
+
+        <p>第二阶段，学生CLIP模型的蒸馏。
+
+        <p>第三阶段，学生的推断。
+
+        <p>最后再来一个简洁明了的流程概括图：
+
+        <figure>
+          <img src="static/interpretation_images/fig6_process.png" alt="图挂了= =" width="70%">
+          <figcaption>图6. 计算流程。</figcaption>
+        </figure>
+
       </div>
     </div>
     </div>
@@ -193,25 +255,60 @@
       <div class="column is-four-fifths">
         <div class="content has-text-justified">
         <p>
-        <h2 class="title is-3">可拓展性：</h2>
-        <p>
-          需要强调的是，其实我们的OKDHP方法不仅是对于hourglass类别的网络有着明显的提升，对于其他的姿态估计网络也有效果，
-          我们将其拓展到了一个非常lightweight且能够real time进行姿态估计的开源实现MobilePose上面。
-          结果放在了paper的末尾位置的Supplementary Material里。
-        <p>
-          这里的MobilePose可以粗略的将这个网络分为encoder（backbone）和decoder部分。网络结构设计上，
-          我们选择去share整个的encoder部分，然后建立三个独立的分支，每个独立的分支都对应一个完整的decoder部分，
-          其中FAU结构保持不变。结果如下：
-          <figure>
-            <img src="static/images/mobilepose.png" alt="" width="80%">
-            <figcaption> Fig.4 在MPII验证集的PCKh@0.5分数。</figcaption>
-          </figure>
-        <p>
-          可以看到，对于更加轻量化的backbone结果，我们的OKDHP方法可以获得更明显的涨点。
-        <p>
-          再次说明一下，我们的方法不仅仅是能够work在hourglass这个特定的网络上面。针对其他的网络结构，如果想要应用OKDHP，
-          仔细的选择网络中共享和独立的部分来设计网络，我们提出的整个框架具有很好的拓展性。
-        </p>
+        <h2 class="title is-3">实验结果</h2>
+        
+        <p>我们的PromptKD方法在prompt learning的11个benchmark dataset上都达到了SOTA的性能。
+
+        <p><strong>Base-to-novel实验</strong></p>
+
+        <figure>
+          <img src="static/interpretation_images/table1_base2novel.png" alt="图挂了= =" width="100%">
+          <figcaption>表1. Base-to-novel实验结果。</figcaption>
+        </figure>
+
+        <figure>
+          <img src="static/interpretation_images/fig7_hm.png" alt="图挂了= =" width="75%">
+          <figcaption>图7. HM分数在11个数据集上的总揽图。</figcaption>
+        </figure>
+
+        <p><strong>Cross-dataset实验</strong></p>
+
+        <figure>
+          <img src="static/interpretation_images/table2_cross.png" alt="图挂了= =" width="100%">
+          <figcaption>表2. Cross-dataset实验结果。</figcaption>
+        </figure>
+
+        <p><strong>消融实验</strong></p>
+
+        <p>为了实验快速进行，消融实验里使用的不是全量数据集，而是64 shots per class进行的训练。所以会与表1中的数据相比略低。
+
+        <p>与其他同样使用了无标签数据的工作的性能对比
+
+        <figure>
+          <img src="static/interpretation_images/table3_unsupervise.png" alt="图挂了= =" width="60%">
+          <figcaption>表3. 在Flowers102数据集上与使用了无标签数据的其他方法的对比结果。</figcaption>
+        </figure>
+
+        <p><strong>教师预训练方法的选择</strong></p>
+
+        <p>在PromptKD中，任意类型的ViT-L/14 CLIP教师模型都可以蒸馏出一个很好的ViT-B/16 CLIP模型，相比于baseline (70.22 HM)都有明显的提升。
+
+        <p>这里有一点非常有意思的是，我们可以看到，第四行的Teacher(CLIP) ViT-L/14也就是原始的CLIP模型，在经过PromptKD的蒸馏之后，我们的ViT-B/16 CLIP的结果（表1(b)）明显超过了原始的ViT-L/14 CLIP模型。(77.62 vs. 76.52)
+
+        <figure>
+          <img src="static/interpretation_images/table4_pretrain_method.png" alt="图挂了= =" width="60%">
+          <figcaption>表4. 不同教师预训练方法对PromptKD蒸馏效果的影响。</figcaption>
+        </figure>
+
+        <p><strong>不同容量教师模型的选择</strong></p>
+
+        <p>如表5所示，绿色代表学生ViT-B/16 CLIP的HM分数，土黄色代表教师的HM分数。教师的性能越高，越能训练出更好的学生。</p>
+
+        <figure>
+          <img src="static/interpretation_images/fig8_teachers.png" alt="图挂了= =" width="60%">
+          <figcaption>图8. 不同容量的CLIP模型作为教师进行蒸馏。</figcaption>
+        </figure>
+        <p>欢迎大家试用PrompKD～</p>
       </div>
     </div>
     </div>
@@ -221,61 +318,131 @@
 <section class="section hero is-light">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
+      <div class="column is-four-fifths width:100%">
         <div class="content has-text-justified">
         <p>
-          <h2 class="title is-3">实验结果：</h2>
-          <p>
-            在MPII 验证集和测试集上：
-            <figure>
-              <img src="static/images/mpii_compare_method.png" alt="" width="100%">
-              <figcaption>Fig.5 MPII测试机方法对比PCKh@0.5分数。</figcaption>
-            </figure>
-            <figure>
-              <img src="static/images/mpii_increase.png" alt="" width="90%">
-              <figcaption>Fig.6 MPII验证集上PCKh@0.5分数。</figcaption>
-            </figure>
-            <p>
-            在Fig. 5上，我们针对2-stack，4-stack和8-stack都进行了实验，默认的实验条件是3分支结构。
-            共享的HG数量是整个目标网络HG的一半，即要训练一个8-stack HG，会share 4个HG，独立4个HG。FAU结构不随HG数量改变。
-            <p>
-            更进一步对比我们的Balance和Unbalance结构：
-            <figure>
-              <img src="static/images/balance_unbalance.png" alt="" width="50%">
-              <figcaption>Fig.7 基于4-stack HG的不同蒸馏方法对比。TrainCost: 以GLOPS为单位的训练代价。</figcaption>
-            </figure>
-            <p>
-            更为具体的Unbalance结构的精度情况：
-            <figure>
-              <img src="static/images/branch_acc.png" alt="" width="50%">
-              <figcaption>Fig.8 OKDHP不平衡结构里不同分支准确率的对比。</figcaption>
-            </figure>
-            <p>
-            这里面也就对应上了Fig. 1(c)里面的结构，训练目标就是一个4-stack HG的网络，那么我们这里选择6-stack和8-stack作为辅助分支，
-            确实是取得了更好的结果。
-            <p>
-            在COCO val 2017上：
-            <figure>
-              <img src="static/images/coco_increase.png" alt="" width="100%">
-              <figcaption> Fig.9 OKDHP在COCO val2017数据集上的结果.</figcaption>
-            </figure>
-            <p>
-            也有不错的性能提升。</p>
-      </div>
+        <h2 class="title is-3">问题反馈与解答</h2>
+        <p>
+        <strong>1. 问：蒸馏和推理阶段向学生模型的输入中visual prompt在代码中的位置。</strong>
+        <p>
+        答：这个在CLIP的代码里已经实现了，在PromptKD/clip/model.py line 366开始以后，line 375的self.VPT就是learnable 
+        visual prompt的定义。在forward函数里面line 402就有concat的操作，将visual prompt与image token进行concat输入进ViT进行计算。
+        </p>
+        <p><strong>2. 问：训练PromptKD所需要的计算资源与时间。</strong></p>
+        <p>
+        答：我的实验平台是a100，imagenet和food会花点时间，其他的数据集很快。时间不定，数据量小的2h就能跑完，PromptKD方法对显存占用消耗比较少，1080ti级别11G的卡就可以完全跑起来。
+        </p>
+      </div></div>
     </div>
     </div>
   </div>
-</section> -->
+</section>
 
-<!-- <section class="section">
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered ">
+      <div class="column is-four-fifths width:70%">
+        <div class="content has-text-justified">
+        <p>
+        <h2 class="title is-3">致谢</h2>
+        <p>这篇论文解读感谢师弟武戈同学的部分论文总结，PromptKD这篇工作感谢我的导师和co-author们，另外还非常感谢蚂蚁的申书恒，张长浩和傅幸同学的讨论和帮助。</p>
+      </div></div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-light">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title">以上为全部内容解读</h2>
+      <div class="column is-five-fifths ">
+        <div class="content has-text-justified">
+        <p>
+        <h2 class="title is-3">参考文献</h2>
+        [1] Learning Transferable Visual Models From Natural Language Supervision ICML 21.  
+        <br>
+        [2] An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale. ICLR 21.  
+        <br>
+        [3] Learning to Prompt for Vision-Language Models. IJCV 22.  
+        <br>
+        [4] Visual Prompt Tuning. ECCV 22.
+        <br>  
+        [5] Conditional Prompt Learning for Vision-Language Models. CVPR 22.
+        <br>
+        [6] Learning to decompose visual features with latent textual prompts. ICLR 23.
+        <br>
+        [7] Exploring Visual Prompts for Adapting Large-Scale Models. arxiv 22.
+        <br>
+        [8] Diversity-Aware Meta Visual Prompting. CVPR 23.
+        <br>
+        [9] MaPLe: Multi-modal Prompt Learning. CVPR 23.
+        <br>
+        [10] Read-only Prompt Optimization for Vision-Language Few-shot Learning. ICCV 23.
+        <br>
+        [11] Task Residual for Tuning Vision-Language Models. CVPR 23.
+        <br>
+        [12] SA2VP: Spatially Aligned-and-Adapted Visual Prompt. AAAI 24.
+        <br>
+        [13] LaViP: Language-Grounded Visual Prompts. AAAI 24.
+        <br>
+        [14] Learning Hierarchical Prompt with Structured Linguistic Knowledge for Vision-Language Models. AAAI 24.
+        <br>
+        [15] Visual Classification via Description from Large Language Models. ICML 23.
+        <br>
+        [16] ArGue: Attribute-Guided Prompt Tuning for Vision-Language Models. arxiv 23.
+        <br>
+        [17] What does a platypus look like? Generating customized prompts for zero-shot image classification. ICCV 23.
+        <br>
+        [18] Prompt, Generate, then Cache: Cascade of Foundation Models makes Strong Few-shot Learners. CVPR 23.
+        <br>
+        [19] Learning to Prompt with Text Only Supervision for Vision-Language Models. arxiv 24.
+        <br>
+        [20] Waffling around for Performance: Visual Classification with Random Words and Broad Concepts. ICCV 23.
+        <br>
+        [21] Knowledge-Aware Prompt Tuning for Generalizable Vision-Language Models. ICCV 23.
+        <br>
+        [22] Prompt Pre-Training with Twenty-Thousand Classes for Open-Vocabulary Visual Recognition. NIPS 23.
+        <br>
+        [23] What does CLIP know about a red circle? Visual prompt engineering for VLMs. ICCV 23.
+        <br>
+        [24] Fine-grained visual prompting. NIPS 23.
+        <br>
+        [25] LoGoPrompt: Synthetic Text Images Can Be Good Visual Prompts for Vision-Language Models. ICCV 23.
+        <br>
+        [26] Prompt-aligned Gradient for Prompt Tuning. ICCV 23.
+        <br>
+        [27] Visual-Language Prompt Tuning with Knowledge-guided Context Optimization. CVPR 23.
+        <br>
+        [28] Consistency-guided prompt learning for vision-language models. ICLR 24.
+        <br>
+        [29] Self-regulating Prompts: Foundational Model Adaptation without Forgetting. ICCV 23.
+        <br>
+        [30] LASP: Text-to-Text Optimization for Language-Aware Soft Prompting of Vision & Language Models. CVPR 23.
+        <br>
+        [31] Align Your Prompts: Test-Time Prompting with Distribution Alignment for Zero-Shot Generalization. NIPS 23.
       </div>
     </div>
+    </div>
   </div>
-</section> -->
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths width:100%">
+
+      <div class="column">
+        <div class="content has-text-centered">
+        <h2 class="title">以上为全部内容解读</h2>
+      </pre>
+      </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
 
 </body>
 </html>
