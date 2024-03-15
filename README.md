@@ -158,12 +158,13 @@ For any questions, please contact me via email (zhengli97[at]mail.nankai.edu.cn)
 If you find our paper or repo is helpful for your research, please consider citing our paper and giving this repo a ⭐.
 
 ```
-@article{li2024promptkd,
+@inproceedings{li2024promptkd,
   title={PromptKD: Unsupervised Prompt Distillation for Vision-Language Models},
   author={Li, Zheng and Li, Xiang and Fu, Xinyi and Zhang, Xin and Wang, Weiqiang and Chen, Shuo and Yang, Jian},
-  journal={arXiv preprint arXiv:2403.02781},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
   year={2024}
 }
+
 ```
 
 ## Acknowledgements
