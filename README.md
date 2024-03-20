@@ -78,7 +78,7 @@ The source model is trained on ImageNet. "ZSL" denotes the setting type for Zero
 2. (1) Pre-train your own large teacher CLIP model (See below) or (2) use our publicly released pre-trained teacher ViT-L/14 CLIP models. (**Highly Recommended**)   
 Our pre-trained teacher models are publicly available at [[Baidu Yun](https://pan.baidu.com/s/1KNJ1mhNKoxdSli4ZldeZUg?pwd=mjf4)] [[TeraBox](https://terabox.com/s/1X4mxJtSaR8W2lrK5bsrCkg)] [[Google Cloud](https://drive.google.com/drive/folders/1OdQ9WauZmYAzVSUTTw7tIKKChyECIS5B?usp=sharing)]   
 (Note that due to cloud space limitations, we only provide a limited number of models in Google Cloud. Sorry.)  
-After obtaining the teacher model, unzip these files and place the model in the `./teacher_models` folder.   
+After obtaining the teacher model, unzip these files and place the model in the `./teacher_model` folder.   
 The accuracy of each teacher model is shown in Tables 10 and 11 in the supplementary material of the paper.  
 
 3. Download the original ViT-B/16 and ViT-L/14 CLIP model weights from the official OpenAI website. Then place these models in the `./clip` folder.  

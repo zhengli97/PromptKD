@@ -22,7 +22,7 @@ pip install torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio==0.9.0 -f ht
 # Instructions borrowed from https://github.com/KaiyangZhou/Dassl.pytorch#installation
 
 # Clone this repo
-git clone https://github.com/KaiyangZhou/Dassl.pytorch.git
+# original source: https://github.com/KaiyangZhou/Dassl.pytorch.git
 cd Dassl.pytorch/
 
 # Install dependencies
