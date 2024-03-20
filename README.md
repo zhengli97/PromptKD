@@ -93,6 +93,11 @@ In our paper, we default use PromptSRC to pre-train our ViT-L/14 CLIP teacher mo
 If your want to train our own teacher model, first you should change `scripts/promptsrc/base2new_train.sh line 11 CFG=vit_b16_c2_ep20_batch4_4+4ctx` to `vit_l14_c2_ep20_batch8_4+4ctx`.
 Then follow the instructions listed in `docs/PromptSRC.md` and run the script.
 
+**Important Note:**
+The accuracy of your own teacher model may vary depending on your computing environment. To ensure that your teacher model is adequate for distillation, please refer to Appendix Table 10 to check whether your model achieves appropriate accuracy. 
+
+If your teacher model cannot achieve the corresponding accuracy or cannot be trained due to computational constraints, I highly recommend that you use our publicly available pre-trained models for distillation.
+
 ### Running PromptKD 
 
 #### (1) Base-to-Novel Experiments.
