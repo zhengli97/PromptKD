@@ -5,6 +5,7 @@
 
 > [**PromptKD: Unsupervised Prompt Distillation for Vision-Language Models**]() <br>
 > Zheng Li, Xiang Li*, Xinyi Fu, Xin Zhang, Weiqiang Wang, Shuo Chen, Jian Yang*. <br>
+> Nankai University, Ant Group, RIKEN <br>
 > CVPR 2024 <br>
 > [[Paper](https://arxiv.org/abs/2403.02781)] [[Project Page](https://zhengli97.github.io/PromptKD)] [[中文解读](https://zhengli97.github.io/PromptKD/chinese_interpertation.html)]
 
@@ -93,7 +94,7 @@ In our paper, we default use PromptSRC to pre-train our ViT-L/14 CLIP teacher mo
 If your want to train our own teacher model, first you should change `scripts/promptsrc/base2new_train.sh line 11 CFG=vit_b16_c2_ep20_batch4_4+4ctx` to `vit_l14_c2_ep20_batch8_4+4ctx`.
 Then follow the instructions listed in `docs/PromptSRC.md` and run the script.
 
-**Important Note:**
+**Important Note:**  
 The accuracy of your own teacher model may vary depending on your computing environment. To ensure that your teacher model is adequate for distillation, please refer to Appendix Table 10 to check whether your model achieves appropriate accuracy. 
 
 If your teacher model cannot achieve the corresponding accuracy or cannot be trained due to computational constraints, I highly recommend that you use our publicly available pre-trained models for distillation.
@@ -169,7 +170,6 @@ If you find our paper or repo is helpful for your research, please consider citi
   booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
   year={2024}
 }
-
 ```
 
 ## Acknowledgements
