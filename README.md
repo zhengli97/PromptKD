@@ -4,7 +4,7 @@
 
 
 > [**PromptKD: Unsupervised Prompt Distillation for Vision-Language Models**]() <br>
-> Zheng Li, Xiang Li*, Xinyi Fu, Xin Zhang, Weiqiang Wang, Shuo Chen, Jian Yang*. <br>
+> Zheng Li, Xiang Li#, Xinyi Fu, Xin Zhang, Weiqiang Wang, Shuo Chen, Jian Yang#. <br>
 > Nankai University, Ant Group, RIKEN <br>
 > CVPR 2024 <br>
 > [[Paper](https://arxiv.org/abs/2403.02781)] [[Project Page](https://zhengli97.github.io/PromptKD)] [[中文解读](https://zhengli97.github.io/PromptKD/chinese_interpertation.html)]
@@ -69,8 +69,6 @@ The source model is trained on ImageNet. "ZSL" denotes the setting type for Zero
 </figure>
 
 ## Running
-
-(This repo is still under construction and we will update the remaining content soon.)  
 
 ### Preliminary
 
@@ -151,17 +149,13 @@ sh scripts/promptkd/base2new_train.sh oxford_pets 1
     
 4. The output results will be automatically saved at `output/${DATASET}/${TRAINER}/${CFG}_${SHOTS}shots/seed${SEED}`.
 
-## Model Zoo (TBD)
-
-We will provide training logs and completed model files for your reference. Please wait.
-
 ## Contact
 
 For any questions, please contact me via email (zhengli97[at]mail.nankai.edu.cn).
 
 ## Citation
 
-If you find our paper or repo is helpful for your research, please consider citing our paper and giving this repo a ⭐.
+If you find our paper or repo is helpful for your research, please kindly cite our paper and give this repo a star⭐.
 
 ```
 @inproceedings{li2024promptkd,
