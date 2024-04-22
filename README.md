@@ -149,6 +149,11 @@ sh scripts/promptkd/base2new_train.sh oxford_pets 1
     
 4. The output results will be automatically saved at `output/${DATASET}/${TRAINER}/${CFG}_${SHOTS}shots/seed${SEED}`.
 
+## Model Zoo
+
+Here we provide the pretrained student models and complete training logs using 64-shots and 0-shots (i.e., full dataset) on ImageNet dataset for your references. Please refer to [[Releases Part](https://github.com/zhengli97/PromptKD/releases)].
+
+
 ## Contact
 
 For any questions, please contact me via email (zhengli97[at]mail.nankai.edu.cn).
