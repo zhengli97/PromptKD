@@ -282,7 +282,7 @@
 
         <p>为了实验快速进行，消融实验里使用的不是全量数据集，而是64 shots per class进行的训练。所以会与表1中的数据相比略低。
 
-        <p>与其他同样使用了无标签数据的工作的性能对比
+        <p>与其他同样使用了无标签数据的工作的性能对比:
 
         <figure>
           <img src="static/interpretation_images/table3_unsupervise.png" alt="图挂了= =" width="60%">
@@ -320,18 +320,41 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths width:100%">
         <div class="content has-text-justified">
-        <p>
+        
         <h2 class="title is-3">问题反馈与解答</h2>
-        <p>
-        <strong>1. 问：蒸馏和推理阶段向学生模型的输入中visual prompt在代码中的位置。</strong>
-        <p>
-        答：这个在CLIP的代码里已经实现了，在PromptKD/clip/model.py line 366开始以后，line 375的self.VPT就是learnable 
-        visual prompt的定义。在forward函数里面line 402就有concat的操作，将visual prompt与image token进行concat输入进ViT进行计算。
+        
+        <p><strong>1. 问：蒸馏和推理阶段向学生模型的输入中visual prompt在代码中的位置。</strong></p>
+        <p> 答：这个在CLIP的代码里已经实现了，在PromptKD/clip/model.py line 366开始以后，line 375的self.VPT就是learnable visual prompt的定义。在forward函数里面line 402就有concat的操作，将visual prompt与image token进行concat输入进ViT进行计算。
         </p>
-        <p><strong>2. 问：训练PromptKD所需要的计算资源与时间。</strong></p>
-        <p>
-        答：我的实验平台是a100，imagenet和food会花点时间，其他的数据集很快。时间不定，数据量小的2h就能跑完，PromptKD方法对显存占用消耗比较少，1080ti级别11G的卡就可以完全跑起来。
+
+        <p><strong>2. 问：想要找一个更小backbone的CLIP做蒸馏，只有ResNet-based CLIP了，但是ResNet-based CLIP不支持token形式的learnable prompt，怎么办？</strong></p>
+        <p> 
+        答：两种方式，第一种，学生模型在这里不是必须要有prompt的，当变成resnet或者更小的模型时，也可以考虑去全参数微调去拟合下游任务。
+        第二种，当不支持token形式的prompt时，VPT论文其实给出了方案，就是在spatial的层面去加prompt，另外还可以参考MIT的工作《Exploring Visual Prompts for Adapting Large-Scale Models》，这篇论文的图里给出了很具体的可以应用的visual prompt实现方法，代码 (https://github.com/hjbahng/visual_prompting) 也已经开源了，可以参考去使用。  
         </p>
+        
+        <p><strong> 3. 问：Teacher CLIP如果没有prompt，不做pretrain可不可以？</strong></p>
+        <p> 答：是可以的。其实PromptKD这里的teacher不用局限在到底有没有经过pretrain这个事情上，我们在论文的table 6里也验证了，即使是最原始的ViT-L/14 CLIP用来做蒸馏，也可以取得明显的提升效果。因为promptkd本身是一种纯kd的训练方法，所以teacher的acc其实决定了student学习效果的上限，我们对teacher去进行pre-train，就是在提升这个上限，所以是上限越高蒸馏结果越好。但是如果不做pre-train，也不影响promptkd方法的使用。</p>
+
+        <p><strong> 4. 问：PromptKD和PromptSRC对硬件的需求。</strong></p>
+        <p> 答：我的实验是在A100的卡上完成的，所以没有特别在意这个，可能记得不太清楚具体细节了，PromptSRC对于卡的需要还是比较高的，最好是24g的卡，promptkd很省显存，我印象里之前跑某个实验时大概7-8G显存，用11g的1080ti应该就可以跑起来。</p>
+
+        <p><strong> 5. 问：蒸馏阶段的数据如果有真实标签怎么办？</strong></p>
+        <p> 答：在本文中，PromptKD受限于论文实验验证标准，使用的是无标签数据进行的蒸馏。而在现实中，如果训练数据包含有gt label，则可以考虑在学生的训练时直接使用gt label，即将图6里算loss这一行只有kd loss的情况换成loss = a* CE(l_stu, gt)+ b * KLD(l_stu, l_tea)进行训练，其中a，b为两项loss的超参，ce为朝着gt优化的cross entropy loss，在训练时可以先固定a=1不动，调整b来进行蒸馏实验，直到发现最优参数。</p>
+
+        <p><strong> 6. 问：蒸馏后的学生模型碰到新的类别怎么办？</strong></p>
+        <p> 答：当遇到新类别时，已有的预存储的文本特征已经不再适用，这时可以用教师的text encoder再inference一遍得到新的text feature用来计算。这里需要说明的一点是，这一步重新计算的操作确实存在限制，但这不是promptkd方法层面导致的，而是clip在遇到新的类别的时候都需要进行一次计算。promptkd是在clip本身基础上进行的对已知类别的优化。</p>
+
+        <p><strong> 7. 代码复现问题集合</strong></p>
+
+        <p><strong>(1) 问：结果是单次还是平均？</strong></p>
+        <p> 答：基于3个seed得到的结果取平均。</p> 
+
+        <p><strong>(2) 问：尝试自己预训练教师，然后进行蒸馏，结果达不到</strong></p>
+        <p> 答：首先需要注意的是，预训练教师是否达到了论文补充材料的table 10里面报告的acc。如果没达到，那么可能蒸馏的效果就不会那么好。（论文的预训练方法是采用promptsrc用默认训练的setting训的VIT-L/14 CLIP）。为了方便复现，github代码里面已经在各种渠道提供了预训练的模型，包括百度云，terabox，google cloud，github的repo下releases部分。推荐使用已有预训练模型进行训练。</p>
+
+        <p><strong>(3) 问：复现结果有波动</strong></p>
+        <p> 答：prompt learning领域方法的论文有两个限制：训练数据量小和训练参数量小。这时候会存在一定的训练的波动，推荐多run几个seed，比如seed 1-5，然后去掉训练波动的数据值，取三个结果avg作为最终结果。更推荐大家在数据量大的数据集imagenet上做实验，实验结果会比较稳定。</p>
       </div></div>
     </div>
     </div>
