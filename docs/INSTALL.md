@@ -17,6 +17,17 @@ conda activate promptkd
 pip install torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html
 ```
 
+* Clone PromptKD code repository and install requirements
+```bash
+# Clone PromptSRC code base
+git clone https://github.com/zhengli97/PromptKD.git
+
+cd PromptKD/
+# Install requirements
+
+pip install -r requirements.txt
+```
+
 * Install dassl library.
 ```bash
 # Instructions borrowed from https://github.com/KaiyangZhou/Dassl.pytorch#installation
@@ -30,19 +41,4 @@ pip install -r requirements.txt
 
 # Install this library (no need to re-build if the source code is modified)
 python setup.py develop
-cd ..
-```
-
-* Clone PromptKD code repository and install requirements
-```bash
-# Clone PromptSRC code base
-git clone https://github.com/zhengli97/PromptKD.git
-
-cd PromptKD/
-# Install requirements
-
-pip install -r requirements.txt
-
-# Update setuptools package 
-pip install setuptools==59.5.0
 ```
