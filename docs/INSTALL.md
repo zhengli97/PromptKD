@@ -26,6 +26,8 @@ cd PromptKD/
 # Install requirements
 
 pip install -r requirements.txt
+
+cd ..
 ```
 
 * Install dassl library.
