@@ -7,7 +7,7 @@
 > Zheng Li, Xiang Li#, Xinyi Fu, Xin Zhang, Weiqiang Wang, Shuo Chen, Jian Yang#. <br>
 > Nankai University, Ant Group, RIKEN <br>
 > CVPR 2024 <br>
-> [[Paper](https://arxiv.org/abs/2403.02781)] [[Project Page](https://zhengli97.github.io/PromptKD)] [[Poster](https://github.com/zhengli97/PromptKD/blob/main/images/promptkd_poster.pdf)][[中文解读](https://zhengli97.github.io/PromptKD/chinese_interpertation.html)]
+> [[Paper](https://arxiv.org/abs/2403.02781)] [[Project Page](https://zhengli97.github.io/PromptKD)] [[Poster](https://github.com/zhengli97/PromptKD/blob/main/images/promptkd_poster.pdf)] [[中文解读](https://zhengli97.github.io/PromptKD/chinese_interpertation.html)]
 
 
 <hr />
@@ -156,7 +156,7 @@ Here we provide the pretrained student models and complete training logs using 6
 
 ## Contact
 
-For any questions, please contact me via email (zhengli97[at]mail.nankai.edu.cn).
+If you have any questions, you can submit an issue on github, leave a message on [Zhihu Article](https://zhuanlan.zhihu.com/p/684269963) (if you can speak Chinese), or contact me by email (zhengli97[at]mail.nankai.edu.cn).
 
 ## Citation
 
