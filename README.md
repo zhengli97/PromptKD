@@ -164,9 +164,10 @@ If you find our paper or repo is helpful for your research, please kindly cite o
 
 ```
 @inproceedings{li2024promptkd,
-  title={PromptKD: Unsupervised Prompt Distillation for Vision-Language Models},
+  title={Promptkd: Unsupervised prompt distillation for vision-language models},
   author={Li, Zheng and Li, Xiang and Fu, Xinyi and Zhang, Xin and Wang, Weiqiang and Chen, Shuo and Yang, Jian},
   booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={26617--26626},
   year={2024}
 }
 ```
