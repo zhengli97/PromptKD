@@ -9,7 +9,6 @@
 > CVPR 2024 <br>
 > [[Paper](https://arxiv.org/abs/2403.02781)] [[Project Page](https://zhengli97.github.io/PromptKD)] [[Poster](https://github.com/zhengli97/PromptKD/blob/main/images/promptkd_poster.pdf)] [[中文解读](https://zhengli97.github.io/PromptKD/chinese_interpertation.html)]
 
-
 <hr />
 
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/promptkd-unsupervised-prompt-distillation-for/prompt-engineering-on-caltech-101)](https://paperswithcode.com/sota/prompt-engineering-on-caltech-101?p=promptkd-unsupervised-prompt-distillation-for)
@@ -26,6 +25,7 @@
 
 <hr />
 
+If you are interested in prompt learning and want to know more about related work, we also maintain a [list of awesome papers](https://github.com/zhengli97/Awesome-Prompt-Adapter-Learning-for-Vision-Language-Models) for your reference. 
 
 ### Abstract
 
@@ -89,7 +89,7 @@ The accuracy of each teacher model is shown in Tables 10 and 11 in the supplemen
 
 In our paper, we default use PromptSRC to pre-train our ViT-L/14 CLIP teacher model. We have already provided the config file in `configs/trainers/PromptSRC/vit_l14_c2_ep20_batch8_4+4ctx.yaml`
 
-If your want to train our own teacher model, first you should change `scripts/promptsrc/base2new_train.sh line 11 CFG=vit_b16_c2_ep20_batch4_4+4ctx` to `vit_l14_c2_ep20_batch8_4+4ctx`.
+If you want to train your own teacher model, first you should change `scripts/promptsrc/base2new_train.sh line 11 CFG=vit_b16_c2_ep20_batch4_4+4ctx` to `vit_l14_c2_ep20_batch8_4+4ctx`.
 Then follow the instructions listed in `docs/PromptSRC.md` and run the script.
 
 **Important Note:**  
@@ -101,11 +101,11 @@ If your teacher model cannot achieve the corresponding accuracy or cannot be tra
 
 #### (1) Base-to-Novel Experiments.
 
-1. The base-to-novel experimental settings are provided in config file at `configs/trainers/PromptKD/vit_b16_c2_ep20_batch8_4+4ctx.yaml`. You can modify the hyper-parameteres in this config file according to your needs.
+1. The base-to-novel experimental settings are provided in the config file at `configs/trainers/PromptKD/vit_b16_c2_ep20_batch8_4+4ctx.yaml`. You can modify the hyper-parameters in this config file according to your needs.
 
 2. Change the dataset path in `scripts/promptkd/base2new_train.sh line 4` to your current path.
 
-3. Run the commands below to train PromptKD on specified dataset.
+3. Run the commands below to train PromptKD on the specified dataset.
 
 For example:
 ```
@@ -122,15 +122,15 @@ sh scripts/promptkd/base2new_train.sh imagenet 3
 sh scripts/promptkd/base2new_train.sh caltech101 1
 ```
 
-4. The output results will be automatically save at `output/base2new/train_base/${DATASET}/shots_${SHOTS}/${TRAINER}/${CFG}/seed_${SEED}`.
+4. The output results will be automatically saved at `output/base2new/train_base/${DATASET}/shots_${SHOTS}/${TRAINER}/${CFG}/seed_${SEED}`.
 
 #### (2) Cross-dataset Experiments.
 
-1. The cross-dataset experimental settings are provided in config file at `configs/trainers/PromptKD/vit_b16_c2_ep20_batch8_4+4ctx_cross_datasets.yaml`. You can modify the hyper-parameteres in this config file according to your needs.
+1. The cross-dataset experimental settings are provided in the config file at `configs/trainers/PromptKD/vit_b16_c2_ep20_batch8_4+4ctx_cross_datasets.yaml`. You can modify the hyper-parameteres in this config file according to your needs.
 
 2. Change the dataset path in `scripts/promptkd/base2new_train.sh line 4` to your current path.
 
-3. Run the commands below to train PromptKD on specified dataset.
+3. Run the commands below to train PromptKD on the specified dataset.
 
 For example:
 ```
@@ -151,16 +151,16 @@ sh scripts/promptkd/base2new_train.sh oxford_pets 1
 
 ## Model Zoo
 
-Here we provide the pretrained student models and complete training logs using 64-shots and 0-shots (i.e., full dataset) on ImageNet dataset for your references. Please refer to [[Releases Part](https://github.com/zhengli97/PromptKD/releases)].
+Here we provide the pretrained student models and complete training logs using 64-shots and 0-shots (i.e., full dataset) on the ImageNet dataset for your reference. Please refer to [[Releases Part](https://github.com/zhengli97/PromptKD/releases)].
 
 
 ## Contact
 
-If you have any questions, you can submit an issue on github, leave a message on [Zhihu Article](https://zhuanlan.zhihu.com/p/684269963) (if you can speak Chinese), or contact me by email (zhengli97[at]mail.nankai.edu.cn).
+If you have any questions, you can submit an issue on GitHub, leave a message on [Zhihu Article](https://zhuanlan.zhihu.com/p/684269963) (if you can speak Chinese), or contact me by email (zhengli97[at]qq.com).
 
 ## Citation
 
-If you find our paper or repo is helpful for your research, please kindly cite our paper and give this repo a star⭐.
+If you find our paper or repo helpful for your research, please consider citing our paper and giving this repo a star⭐. Thank you!
 
 ```
 @inproceedings{li2024promptkd,
