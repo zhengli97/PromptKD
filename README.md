@@ -25,7 +25,11 @@
 
 <hr />
 
+### 💡Tips:
+
 If you are interested in prompt learning and want to know more about related work, we also maintain a [list of awesome papers](https://github.com/zhengli97/Awesome-Prompt-Adapter-Learning-for-Vision-Language-Models) for your reference. 
+
+<hr />
 
 ### Abstract
 
