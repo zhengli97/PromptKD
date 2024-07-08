@@ -89,7 +89,7 @@ The accuracy of each teacher model is shown in Tables 10 and 11 in the supplemen
 
 4. Prepare the dataset. Please follow the instructions detailed in [DATASETS.md](docs/DATASETS.md).
 
-### Train Your Teacher Model
+### Train Your Teacher Model (Optional)
 
 In our paper, we default use PromptSRC to pre-train our ViT-L/14 CLIP teacher model. We have already provided the config file in `configs/trainers/PromptSRC/vit_l14_c2_ep20_batch8_4+4ctx.yaml`
 
@@ -160,7 +160,7 @@ Here we provide the pretrained student models and complete training logs using 6
 
 ## Contact
 
-If you have any questions, you can submit an issue on GitHub, leave a message on [Zhihu Article](https://zhuanlan.zhihu.com/p/684269963) (if you can speak Chinese), or contact me by email (zhengli97[at]qq.com).
+If you have any questions, you can submit an [issue](https://github.com/zhengli97/PromptKD/issues) on GitHub, leave a message on [Zhihu Article](https://zhuanlan.zhihu.com/p/684269963) (if you can speak Chinese), or contact me by email (zhengli97[at]qq.com).
 
 ## Citation
 
