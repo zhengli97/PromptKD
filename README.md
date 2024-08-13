@@ -133,7 +133,7 @@ sh scripts/promptkd/base2new_train.sh caltech101 1
 
 1. The cross-dataset experimental settings are provided in the config file at `configs/trainers/PromptKD/vit_b16_c2_ep20_batch8_4+4ctx_cross_datasets.yaml`. You can modify the hyper-parameteres in this config file according to your needs.
 
-2. Change the dataset path in `scripts/promptkd/base2new_train.sh line 4` to your current path.
+2. Change the dataset path in `scripts/promptkd/xd_train.sh line 4` to your current path.
 
 3. Run the commands below to train PromptKD on the specified dataset.
 
@@ -149,7 +149,7 @@ sh scripts/promptkd/xd_train.sh caltech101 2
 sh scripts/promptkd/xd_train.sh caltech101 3
 
 # dataset=oxford_pets, seed=1
-sh scripts/promptkd/base2new_train.sh oxford_pets 1
+sh scripts/promptkd/xd_train.sh oxford_pets 1
 ```
     
 4. The output results will be automatically saved at `output/${DATASET}/${TRAINER}/${CFG}_${SHOTS}shots/seed${SEED}`.
