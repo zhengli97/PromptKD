@@ -25,6 +25,12 @@
 
 <hr />
 
+### 🔥 News
+
+- Our lab has released a new work that also uses the unsupervised prompt distillation method, Cascade Prompt Learning for Vision-Language Model Adaptation ([[Paper](https://arxiv.org/abs/2409.17805)][[Code](https://github.com/megvii-research/CasPL)]), which has been accepted by ECCV 2024. Feel free to check it out~
+
+<hr />
+
 ### 💡Tips:
 
 1. If you are interested in prompt learning and want to know more about related work, we also maintain a [list of awesome papers](https://github.com/zhengli97/Awesome-Prompt-Adapter-Learning-for-Vision-Language-Models) for your reference.
