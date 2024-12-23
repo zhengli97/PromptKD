@@ -3,10 +3,10 @@
 <!-- This is the official PyToch implementation for "PromptKD: Unsupervised Prompt Distillation for Vision-Language Models." (CVPR 2024) -->
 
 
-> [**PromptKD: Unsupervised Prompt Distillation for Vision-Language Models**]() <br>
-> Zheng Li, Xiang Li#, Xinyi Fu, Xin Zhang, Weiqiang Wang, Shuo Chen, Jian Yang#. <br>
-> Nankai University, Ant Group, RIKEN <br>
-> CVPR 2024 <br>
+> **PromptKD: Unsupervised Prompt Distillation for Vision-Language Models**
+> Zheng Li, Xiang Li#, Xinyi Fu, Xin Zhang, Weiqiang Wang, Shuo Chen, Jian Yang#.
+> Nankai University, Ant Group, RIKEN 
+> CVPR 2024
 > [[Paper](https://arxiv.org/abs/2403.02781)] [[Project Page](https://zhengli97.github.io/PromptKD)] [[Poster](https://github.com/zhengli97/PromptKD/blob/main/images/promptkd_poster.pdf)] [[中文解读](https://zhengli97.github.io/PromptKD/chinese_interpertation.html)] [[视频解读](https://www.techbeat.net/talk-info?id=915)]
 
 <hr />
@@ -25,9 +25,12 @@
 
 <hr />
 
-### 🔥 News
+### 🔥 New works
 
-- Our lab has released a new work that also uses the unsupervised prompt distillation method, Cascade Prompt Learning for Vision-Language Model Adaptation ([[Paper](https://arxiv.org/abs/2409.17805)][[Code](https://github.com/megvii-research/CasPL)]), which has been accepted by ECCV 2024. Feel free to check it out~
+We also have other prompt learning works that may interest you: <br>
+> ATPrompt: Textual Prompt Learning with Embedded Attributes. <br>
+> Zheng Li, Yibing Song, Penghai Zhao, Ming-Ming Cheng, Xiang Li#, Jian Yang#. <br>
+> [[Paper](https://arxiv.org/abs/2412.09442)] [[Code](https://github.com/zhengli97/ATPrompt)] [[Project Page](https://zhengli97.github.io/ATPrompt/)] [[中文解读](https://zhuanlan.zhihu.com/p/11787739769)] <br>
 
 <hr />
 
