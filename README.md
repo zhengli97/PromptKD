@@ -3,11 +3,11 @@
 <!-- This is the official PyToch implementation for "PromptKD: Unsupervised Prompt Distillation for Vision-Language Models." (CVPR 2024) -->
 
 
-> **PromptKD: Unsupervised Prompt Distillation for Vision-Language Models**
-> Zheng Li, Xiang Li#, Xinyi Fu, Xin Zhang, Weiqiang Wang, Shuo Chen, Jian Yang#.
-> Nankai University, Ant Group, RIKEN 
-> CVPR 2024
-> [[Paper](https://arxiv.org/abs/2403.02781)] [[Project Page](https://zhengli97.github.io/PromptKD)] [[Poster](https://github.com/zhengli97/PromptKD/blob/main/images/promptkd_poster.pdf)] [[中文解读](https://zhengli97.github.io/PromptKD/chinese_interpertation.html)] [[视频解读](https://www.techbeat.net/talk-info?id=915)]
+> **PromptKD: Unsupervised Prompt Distillation for Vision-Language Models** <br>
+> Zheng Li, Xiang Li#, Xinyi Fu, Xin Zhang, Weiqiang Wang, Shuo Chen, Jian Yang#. <br>
+> Nankai University, Ant Group, RIKEN <br>
+> CVPR 2024 <br>
+> [[Paper](https://arxiv.org/abs/2403.02781)] [[Project Page](https://zhengli97.github.io/PromptKD)] [[Poster](https://github.com/zhengli97/PromptKD/blob/main/images/promptkd_poster.pdf)] [[中文解读](https://zhengli97.github.io/PromptKD/chinese_interpertation.html)] [[视频解读](https://www.techbeat.net/talk-info?id=915)] <br>
 
 <hr />
 
