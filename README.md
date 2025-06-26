@@ -25,12 +25,11 @@
 
 <hr />
 
-### 🔥 New works
+### 🔥 Some other prompt learning projects from our lab may interest you:
 
-We also have other prompt learning works that may interest you: <br>
-> ATPrompt: Textual Prompt Learning with Embedded Attributes. <br>
-> Zheng Li, Yibing Song, Penghai Zhao, Ming-Ming Cheng, Xiang Li#, Jian Yang#. <br>
-> arxiv 2412.09442 <br>
+> Advancing Textual Prompt Learning with Anchored Attributes. <br>
+> Zheng Li, Yibing Song, Ming-Ming Cheng, Xiang Li#, Jian Yang#. <br>
+> ICCV 2025 <br>
 > [[Paper](https://arxiv.org/abs/2412.09442)] [[Code](https://github.com/zhengli97/ATPrompt)] [[Project Page](https://zhengli97.github.io/ATPrompt/)] [[中文解读](https://zhuanlan.zhihu.com/p/11787739769)] <br>
 
 <hr />
