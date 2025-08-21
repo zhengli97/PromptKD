@@ -83,7 +83,7 @@ The accuracy of each teacher model is shown in Tables 10 and 11 in the supplemen
 3. Download the original ViT-B/16 and ViT-L/14 CLIP model weights from the official OpenAI website. Then place these models in the `./clip` folder.  
 [[ViT-B/16 CLIP](https://openaipublic.azureedge.net/clip/models/5806e77cd80f8b59890b7e101eabd078d9fb84e6937f9e85e4ecb61988df416f/ViT-B-16.pt)] [[ViT-L/14 CLIP](https://openaipublic.azureedge.net/clip/models/b8cca3fd41ae0c99ba7e8951adf17d267cdb84cd88be6f7c2e0eca1737a03836/ViT-L-14.pt)]
 
-4. Prepare the dataset. Please follow the instructions detailed in [DATASETS.md](docs/DATASETS.md).
+4. Prepare the dataset. Please follow the instructions detailed in [DATASETS.md](docs/DATASETS.md). For your download convenience, we maintain a repository at huggingface, which contains all the datasets to be used (except imagenet because it is too large).   [[HuggingFace_Download_Links](https://huggingface.co/zhengli97/prompt_learning_dataset)]
 
 ### Train Your Teacher Model (Optional)
 

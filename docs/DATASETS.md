@@ -1,7 +1,5 @@
 # How to install datasets
 
-### Acknowledgement: This readme file for installing datasets has been borrowed directly from [MaPLe's](https://github.com/muzairkhattak/multimodal-prompt-learning) official repository.
-
 We recommend putting all datasets under the same folder (say `$DATA`) to ease management and following the instructions below to organize datasets to avoid modifying the source code. The file structure should look like:
 
 ```
@@ -31,7 +29,16 @@ Datasets list:
 - [ImageNet-A](#imagenet-a)
 - [ImageNet-R](#imagenet-r)
 
+
+
 The instructions to prepare each dataset are detailed below. To ensure reproducibility and fair comparison for future work, we provide fixed train/val/test splits for all datasets except ImageNet where the validation set is used as test set. The fixed splits are either from the original datasets (if available) or created by us.
+
+### Important Note!!
+
+The links to the following dataset may be out of date or invalid due to various factors. To make it easy for you to download theses datasets, we maintain a repository on HuggingFace, which contains all the datasets to used (except ImageNet). 
+
+[[HuggingFace_Dataset_Download_Links](https://huggingface.co/zhengli97/prompt_learning_dataset)]
+
 
 ### ImageNet
 - Create a folder named `imagenet/` under `$DATA`.
