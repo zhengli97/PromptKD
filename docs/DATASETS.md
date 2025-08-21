@@ -33,9 +33,9 @@ Datasets list:
 
 The instructions to prepare each dataset are detailed below. To ensure reproducibility and fair comparison for future work, we provide fixed train/val/test splits for all datasets except ImageNet where the validation set is used as test set. The fixed splits are either from the original datasets (if available) or created by us.
 
-### Important Note!!
+### Important Note!
 
-The links to the following dataset may be out of date or invalid due to various factors. To make it easy for you to download theses datasets, we maintain a repository on HuggingFace, which contains all the datasets to used (except ImageNet). 
+The links to the following dataset may be out of date or invalid due to various factors. To make it easy for you to download theses datasets, we maintain a repository on HuggingFace, which contains all the datasets to used (except ImageNet). Each dataset already contains the split_zhou_xx.json file, so there is no need to download it separately.
 
 [[HuggingFace_Dataset_Download_Links](https://huggingface.co/zhengli97/prompt_learning_dataset)]
 
