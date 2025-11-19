@@ -156,7 +156,7 @@ Here we provide the pretrained student models and complete training logs using 6
 
 ## Contact
 
-If you have any questions, you can submit an [issue](https://github.com/zhengli97/PromptKD/issues) on GitHub, leave a message on [Zhihu Article](https://zhuanlan.zhihu.com/p/684269963) (if you can speak Chinese), or contact me by email (zhengli97[at]qq.com).
+If you have any questions, you can submit an [issue](https://github.com/zhengli97/PromptKD/issues) on GitHub, leave a message on [Zhihu Article](https://zhuanlan.zhihu.com/p/684269963) (if you can speak Chinese), or contact me by email (zhengli97[at]foxmail.com).
 
 ## Citation
 
