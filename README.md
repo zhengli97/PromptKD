@@ -18,6 +18,11 @@
 > ICCV 2025 <br>
 > [[Paper](https://arxiv.org/abs/2412.09442)] [[Code](https://github.com/zhengli97/ATPrompt)] [[Project Page](https://zhengli97.github.io/ATPrompt/)] [[论文解读](https://zhuanlan.zhihu.com/p/11787739769)] [[中文翻译](https://github.com/zhengli97/ATPrompt/blob/main/docs/ATPrompt_chinese_version.pdf)] <br>
 
+> AnchorOPT: Towards Optimizing Dynamic Anchors for Adaptive Prompt Learning. <br>
+> Zheng Li, Yibing Song, Xin Zhang, Lei Luo, Xiang Li#, Jian Yang#. <br>
+> Arxiv 2511.21188 <br>
+> [[Paper](https://arxiv.org/abs/2511.21188)] [[Code](https://github.com/zhengli97/ATPrompt)]   
+
 <hr />
 
 ### 💡 Helpful Resources
